@@ -252,6 +252,20 @@ Windows users:
 
 26. You are now logged into your instance as the "Ubuntu" user, a regular user. 
 27. You can now `sudo su` to become root, or run `sudo` commands.
+28. For example, if you were to install a web server, run this command:
+
+```bash
+apt-get -y install apache2
+```
+
+29. Then, visit your new web server's home page:
+
+```
+http://YOUR-INSTANCE-IP/
+```
+
+30. You should see the Apache welcome page.
+
 
 ### Conclusion
 
