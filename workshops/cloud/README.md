@@ -3,6 +3,17 @@
 In this workshop you will learn the basic functionality of two of the key services offered by AWS: S3 storage and EC2 compute.
 Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
+* S3 Operations
+  * Working with buckets using the web UI.
+  * Working with buckets using the CLI.
+  * Using an S3 bucket as a static website.
+* EC2 Operations
+  * Creating or setting up an SSH keypair.
+  * Launching an EC2 compute instance.
+  * Bootstrapping an EC2 instance for launch.
+  * Using a web browser to access your instance.
+  * Using SSH to log into your instance.
+
 ## S3 - Simple Storage Service
 
 ### Create a Bucket in S3
