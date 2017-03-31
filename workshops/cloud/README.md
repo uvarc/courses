@@ -8,11 +8,11 @@ Follow the lab instructions below at your own pace. Please raise your hand or ge
   * [Working with buckets using the CLI](#s3-commands-in-the-aws-command-line-tools).
   * [Using an S3 bucket as a static website](#create-a-public-html-website-in-amazon-s3).
 * EC2 Operations
-  * [Creating or setting up an SSH keypair]().
-  * [Launching an EC2 compute instance]().
-  * [Bootstrapping an EC2 instance for launch]().
-  * [Using a web browser to access your instance]().
-  * [Using SSH to log into your instance]().
+  * [Creating or setting up an SSH keypair](#set-up-ssh-keypairs).
+  * [Launching an EC2 compute instance](#launch-an-ec2-instance).
+  * [Bootstrapping an EC2 instance for launch](#bootstrapping-your-instance).
+  * [Using a web browser to access your instance](#using-a-web-browser-to-access-your-instance).
+  * [Using SSH to log into your instance](#using-ssh-to-log-into-your-instance).
 
 ## S3 - Simple Storage Service
 
