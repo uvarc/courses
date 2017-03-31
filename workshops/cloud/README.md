@@ -1,9 +1,48 @@
 # Introduction to Cloud - Workshop
 
-## S3 - STORAGE
+## S3 - Simple Storage Service
+
+### Create a Bucket in S3
+1. Log into the **AWS Console** using the account you set up before the workshop.
+2. From the SERVICES tab in the upper-left corner, select the **S3** service.
+3. Click **Create Bucket**. Note that you are not charged for creating a bucket, only for storing objects in that bucket.
+4. A dialogue box will open. Enter a unique **Bucket Name** in the box.
+5. Accept the default region and click **Create**.
+
+### Adding an Object to S3
+6. In the Amazon S3 console, click on the name of the bucket that you just created.
+7. Click **Upload**. The Upload wizard will appear.
+8. Click **Add Files**, or you can simply drag and drop files into the wizard. You may also drag entire folders if you wish. For this example, try adding an image or PDF file.
+9. If you add a file that you do not want to upload, click the `X` to the right of the file name to remove it.
+10. Once you have selected the appropriate files and folders to upload, click either **Upload** to complete the process, or click **Next** if you want to modify any details for your file upload(s). For this example, select **Next**.
+11. If you selected **Next**, one option is to manage permissions for public users. If, for example, you wanted to make an individual file available to the public, you would open the "Manage public permissions" section and select "Read" in the "Objects" column for the "Everyone" group. Do not modify any of the object permissions settings. Then click **Next** to advance.
+12. The next set of options relates to other file properties, such as storage class and encryption. Review these options and then click **Next** again.
+13. Finally, review your uploads on the last pane and select **Upload** when ready. You will be able to see the progress of your upload(s).
+
+### View Object Details in S3
+14. Within the bucket that you created earlier, find a file that you uploaded in the last step.
+15. Select the file by checking the box to the left. A properties pane will appear on the right of your screen.
+16. Note details about your file, such as size, owner, last write date, and the link to your file. Copy the link to your object.
+17. In a new browser window or tab, paste the file link and try to view it. If successful, close your tab. If not, please talk to one of the instructors.
+
+### Delete a file in S3
+18. With your file still selected in the S3 Console, select the "More" menu. Note the options available to you.
+19. Select "Delete" and confirm your choice.
+
+### S3 commands in the AWS Command-Line Tools
+20. Install the AWS CLI in your terminal. Visit https://aws.amazon.com/cli/ for more instructions for your platform.
+21. Setup your AWS CLI by running `aws configure` in your terminal.
+22. Follow the setup instructions, and paste in your AWS Secret and AWS Secret Key.
+23. To work with S3, use the `aws s3` command. For example, to get help:
+
+```bash
+aws s3 help
+```
+
+24. 
 
 
-## EC2 - COMPUTE
+## EC2 - Elastic Cloud Compute
 
 1. Log into the **AWS Console** using the account you set up before the workshop.
 2. From the SERVICES tab in the upper-left corner, select the **EC2** service.
@@ -101,9 +140,21 @@ Windows users:
 
 ## Conclusion
 
-Congratulations! You have successfully done the following:
+Congratulations! You have successfully done the following in S3:
 
-* Logged into the AWS Console
+* Logged into the AWS Console.
+* Created a storage bucket.
+* Uploaded a file to your bucket.
+* Accessed details about that file.
+* Adjust permissions for a file and make it publicly visible.
+* Accessed the file via a web browser.
+* Deleted a file from your bucket.
+* Used the AWS CLI to perform some of the same functions from the command-line.
+
+
+Congratulations! You have successfully done the following in EC2:
+
+* Logged into the AWS Console.
 * Created or imported an SSH key pair.
 * Created an EC2 instance.
 * Customized an EC2 security group.
