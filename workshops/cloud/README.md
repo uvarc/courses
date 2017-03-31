@@ -29,6 +29,8 @@
 18. With your file still selected in the S3 Console, select the "More" menu. Note the options available to you.
 19. Select "Delete" and confirm your choice.
 
+- - -
+
 ### S3 commands in the AWS Command-Line Tools
 20. Install the AWS CLI in your terminal. Visit https://aws.amazon.com/cli/ for more instructions for your platform.
 21. Setup your AWS CLI by running `aws configure` in your terminal.
@@ -80,6 +82,8 @@ aws s3 sync myfolder s3://my-bucket/myfolder/   # Syncs local folder's contents 
 aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to local folder
 ```
 
+- - -
+
 ## EC2 - Elastic Cloud Compute
 
 1. Log into the **AWS Console** using the account you set up before the workshop.
@@ -112,19 +116,19 @@ aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to
 9. In the **User Data** field, paste the code below into the text box:
 
 ```bash
-    #!/bin/bash
-    
-    apt-get -y update
-    apt-get -y upgrade
-    
-    useradd -m -s /bin/bash rstudio
-    echo 'rstudio:rstudio'|chpasswd
-    
-    apt-get -y install r-base
-    apt-get -y install gdebi-core
-    cd /tmp
-    wget https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
-    gdebi --n rstudio-server-1.0.136-amd64.deb
+#!/bin/bash
+
+apt-get -y update
+apt-get -y upgrade
+
+useradd -m -s /bin/bash rstudio
+echo 'rstudio:rstudio'|chpasswd
+
+apt-get -y install r-base
+apt-get -y install gdebi-core
+cd /tmp
+wget https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
+gdebi --n rstudio-server-1.0.136-amd64.deb
 ```
 
 10. Click **Next: Add Storage**. Leave these settings as they are, but note how you can expand the size of the instance hard drive, or add other drives.
@@ -142,7 +146,7 @@ aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to
 22. Find the IPv4 Public IP of your instance. Write that down or copy it to your clipboard.
 23. Using a web browser, go to your instance and specify port 8787:
 
-    http://YOUR-INSTANCE-IP:8787/
+http://YOUR-INSTANCE-IP:8787/
 
 24. You can log into your RStudio Server using the username "rstudio" and the password "rstudio".
 
@@ -163,7 +167,7 @@ Windows users:
 
 * Open PuTTY
 * In the "Host Name" field, log in as "ubuntu" with the IPv4 Public IP of your instance in this format: 
-    ```ubuntu@YOUR-PUBLIC-IP```
+```ubuntu@YOUR-PUBLIC-IP```
 * In the "Category" list expand SSH.
 * Click "Auth" (don't expand it)
 * In the "Private Key for Authentication" box, browse to the PPK file you created earlier.
