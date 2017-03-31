@@ -4,15 +4,15 @@ In this workshop you will learn the basic functionality of two of the key servic
 Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
 * S3 Operations
-  * Working with buckets using the web UI.
-  * Working with buckets using the CLI.
-  * Using an S3 bucket as a static website.
+  * [Working with buckets using the web UI](#create-a-bucket-in-s3).
+  * [Working with buckets using the CLI](#s3-commands-in-the-aws-command-line-tools).
+  * [Using an S3 bucket as a static website](#create-a-public-html-website-in-amazon-s3).
 * EC2 Operations
-  * Creating or setting up an SSH keypair.
-  * Launching an EC2 compute instance.
-  * Bootstrapping an EC2 instance for launch.
-  * Using a web browser to access your instance.
-  * Using SSH to log into your instance.
+  * [Creating or setting up an SSH keypair]().
+  * [Launching an EC2 compute instance]().
+  * [Bootstrapping an EC2 instance for launch]().
+  * [Using a web browser to access your instance]().
+  * [Using SSH to log into your instance]().
 
 ## S3 - Simple Storage Service
 
@@ -155,6 +155,7 @@ Congratulations! You have successfully done the following in S3:
 3. Verify your region. EC2 instances can be placed within various regional locations around the world. For today's workshop please make sure that the OREGON region is selected for your region by checking the upper-right corner of your screen. This region is also known as US-West-2.
 
 - - -
+### Set up SSH Keypairs
 
 **Mac / Linux users:**
 * If this is a new AWS account, you do not yet have any SSH keys created. SSH key pairs are a secure way of signing into your EC2 instance, instead of a username and password.
@@ -172,10 +173,15 @@ Congratulations! You have successfully done the following in S3:
 
 - - -
 
+### Launch an EC2 instance
+
 4. From the EC2 dashboard, click **LAUNCH INSTANCE**.
 5. Find the **Ubuntu Server 16.04** instance and select it using the blue button.
 6. Select Instance type **t2.medium**. Take note of other instance types (sizes) available to you.
 7. Click **NEXT: Configure Instance Details**.
+
+### Bootstrapping your instance
+
 8. Leave the settings as they are configured by default, but take time to note what they are. Scroll down the page and open the "Advanced" portion of the screen.
 9. In the **User Data** field, paste the code below into the text box:
 
@@ -206,6 +212,9 @@ gdebi --n rstudio-server-1.0.136-amd64.deb
 18. Finally, confirm the SSH key you will be using to access this instance. You must specify a key pair (such as the one you created in the steps above), and check the acknowledgement box before you can click **Launch Instances**.
 19. Your server is now being created and configured! Take a short break (3-5 minutes) while your server is built.
 20. Click on **View Instances**, or select "Instances" from the lefthand navigation.
+
+### Using a web browser to access your instance
+
 21. Find the instance you just created and select it using the checkbox on the left of the table.
 22. Find the IPv4 Public IP of your instance. Write that down or copy it to your clipboard.
 23. Using a web browser, go to your instance and specify port 8787:
@@ -213,6 +222,8 @@ gdebi --n rstudio-server-1.0.136-amd64.deb
 ```
 http://YOUR-INSTANCE-IP:8787/
 ```
+
+### Using SSH to log into your instance
 
 24. You can log into your RStudio Server using the username "rstudio" and the password "rstudio".
 25. Now let's SSH into the instance you created.
