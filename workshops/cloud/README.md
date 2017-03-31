@@ -255,7 +255,7 @@ Windows users:
 28. For example, if you were to install a web server, run this command:
 
 ```bash
-apt-get -y install apache2
+sudo apt-get -y install apache2
 ```
 
 29. Then, visit your new web server's home page:
