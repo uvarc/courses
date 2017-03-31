@@ -39,8 +39,46 @@
 aws s3 help
 ```
 
-24. 
+24. List your buckets
 
+```bash
+aws s3 ls
+```
+
+25. Make another bucket
+
+```bash
+aws mb s3://my-bucket
+```
+
+26. List the contents of a bucket
+
+```bash
+aws ls s3://my-bucket/                     # Displays the base contents of a bucket
+aws ls s3://my-bucket/and-folder/          # Displays the contents of a subdir
+aws ls s3://my-bucket/and-folder/*.png     # Displays all PNG files in the subdir
+```
+
+27. Copy an object into S3
+
+```bash
+aws s3 cp my-local-file.zip s3://my-bucket/          # Copies a file into a bucket
+aws s3 cp my-local-file.zip s3://my-bucket/subdir/   # Copies a file into a subdir of a bucket
+aws s3 cp s3://my-bucket/file.zip ./                 # Copies a file from a bucket
+```
+
+28. Remove a file from S3
+
+```bash
+aws s3 rm s3://my-bucket/subdir/my-file.zip   # Removes the file (called a 'key') from S3
+```
+
+29. Synchronize a local folder with S3
+
+```bash
+aws s3 sync myfolder s3://my-bucket/myfolder/   # Syncs local folder's contents up to S3
+aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to local folder
+```
 
 ## EC2 - Elastic Cloud Compute
 
@@ -53,7 +91,7 @@ aws s3 help
 **Mac / Linux users:**
 * If this is a new AWS account, you do not yet have any SSH keys created. SSH key pairs are a secure way of signing into your EC2 instance, instead of a username and password.
 * From the EC2 dashboard, select the "Key Pairs" menu item down the lefthand side of the page.
-* Click on "CREATE KEYPAIR", and give it a memorable name. Then click "Create".
+* Click on **Create Keypair**, and give it a memorable name. Then click "Create".
 * The private half of the kaypair will now be immediately downloaded to your browser. Store this half in a safe location on your computer. The public half of the key pair is now in your AWS account.
 
 **Windows users:**
