@@ -34,6 +34,7 @@ Windows users:
 8. Leave the settings as they are configured by default, but take time to note what they are. Scroll down the page and open the "Advanced" portion of the screen.
 9. In the User Data field, paste the code below into the text box:
 
+```bash
     #!/bin/bash
     
     apt-get -y update
@@ -47,6 +48,7 @@ Windows users:
     cd /tmp
     wget https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
     gdebi --n rstudio-server-1.0.136-amd64.deb
+```
 
 10. Click "Next: Add Storage". Leave these settings as they are, but note how you can expand the size of the instance hard drive, or add other drives.
 11. Click "Next: Add Tags". Create a tag for your instance (optional) and give it a simple name. Click the gray button to add a tag. They "key" should be "Name" and the "value" should be whatever you'd like to name your instance.
