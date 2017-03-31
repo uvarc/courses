@@ -1,5 +1,8 @@
 # Introduction to Cloud - Workshop
 
+In this workshop you will learn the basic functionality of two of the key services offered by AWS: S3 storage and EC2 compute.
+Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
+
 ## S3 - Simple Storage Service
 
 ### Create a Bucket in S3
@@ -84,6 +87,56 @@ aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to
 
 - - -
 
+### Create a Public HTML Website in Amazon S3
+30. Open the Amazon S3 console in your browser.
+31. Click on the name of a bucket you created in earlier steps. This bucket will hold your public website.
+32. You should see four panel options for your bucket: **Objects**, **Properties**, **Permissions**, and **Management**.
+33. Select the **Permissions** panel for your bucket.
+34. You are going to set a permissions policy for your bucket. This is a set of rules that will be applied to every object you upload to your bucket.
+35. Select the **Bucket Policy** button near the top.
+36. In the text editor area, paste the following code. Be sure to update **YOUR-BUCKET-NAME** with the actual name of your bucket. (Also, do not update the Version date, as it applies to the policy framework and not your actual policy itself.)
+
+```json
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid":"AddPerm",
+      "Effect":"Allow",
+      "Principal": "*",
+      "Action":["s3:GetObject"],
+      "Resource":["arn:aws:s3:::YOUR-BUCKET-NAME/*"]
+    }
+  ]
+}
+```
+Take a moment to review this JSON policy. Note that the one statement in it adds a permission, allowing any user (*) to get objects within a specific bucket, specified by a resource ARN. (ARN stands for Amazon Resource Name.)
+Click **Save** to save the custom policy.
+
+37. Next, go to the **Properties** pane for your bucket. Select the **Static website hosting** option.
+38. Select the radio button indicating you want to use this bucket to host a website. Specify an index document (`index.html` is the usual index document for websites.) Then click **Save**.
+39. Then select the **Objects** tab of your bucket. You will need to upload an `index.html` file now. Feel free to write one yourself if you know HTML, or [download one here](https://s3.amazonaws.com/uvasom-resources/courses/index.html) and then upload it to your bucket.
+40. You have now created a bucket, dropped an `index.html` file into it, set the bucket policy to be publicly readable, and set the bucket to serve as a website. The last step is to visit your website! Return to your bucket's properties tab, and select the "Static Website Hosting" button again. At the top you will find an "Endpoint" address. This is the URL to your website. Click it.
+
+### Conclusion
+
+Congratulations! You have successfully done the following in S3:
+
+* Logged into the AWS Console.
+* Created a storage bucket.
+* Uploaded a file to your bucket.
+* Accessed details about that file.
+* Adjust permissions for a file and make it publicly visible.
+* Accessed the file via a web browser.
+* Deleted a file from your bucket.
+* Used the AWS CLI to perform some of the same functions from the command-line.
+* Modified your bucket to serve as a static website.
+* Set a bucket policy so that objects are visible to the public.
+* Created an index.html bucket for your website.
+* Visited your website and verified it works.
+
+- - -
+
 ## EC2 - Elastic Cloud Compute
 
 1. Log into the **AWS Console** using the account you set up before the workshop.
@@ -146,12 +199,11 @@ gdebi --n rstudio-server-1.0.136-amd64.deb
 22. Find the IPv4 Public IP of your instance. Write that down or copy it to your clipboard.
 23. Using a web browser, go to your instance and specify port 8787:
 
+```
 http://YOUR-INSTANCE-IP:8787/
+```
 
 24. You can log into your RStudio Server using the username "rstudio" and the password "rstudio".
-
-- - -
-
 25. Now let's SSH into the instance you created.
 
 Mac / Linux users:
@@ -179,20 +231,7 @@ Windows users:
 26. You are now logged into your instance as the "Ubuntu" user, a regular user. 
 27. You can now `sudo su` to become root, or run `sudo` commands.
 
-
-## Conclusion
-
-Congratulations! You have successfully done the following in S3:
-
-* Logged into the AWS Console.
-* Created a storage bucket.
-* Uploaded a file to your bucket.
-* Accessed details about that file.
-* Adjust permissions for a file and make it publicly visible.
-* Accessed the file via a web browser.
-* Deleted a file from your bucket.
-* Used the AWS CLI to perform some of the same functions from the command-line.
-
+### Conclusion
 
 Congratulations! You have successfully done the following in EC2:
 
