@@ -1,7 +1,6 @@
 # Introduction to Cloud - Workshop
 
-In this workshop you will learn the basic functionality of two of the key services offered by AWS: S3 storage and EC2 compute.
-Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
+In this workshop you will learn the basic functionality of two of the most foundational services offered by AWS: S3 storage and EC2 compute. Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
 * S3 Operations
   * [Working with buckets using the web UI](#create-a-bucket-in-s3).
