@@ -148,7 +148,7 @@ Congratulations! You have successfully done the following in S3:
 
 - - -
 
-## EC2 - Elastic Cloud Compute
+## EC2 - Elastic Compute Cloud
 
 1. Log into the **AWS Console** using the account you set up before the workshop.
 2. From the SERVICES tab in the upper-left corner, select the **EC2** service.
