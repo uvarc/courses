@@ -65,15 +65,15 @@ aws s3 ls
 25. Make another bucket
 
 ```bash
-aws mb s3://my-bucket
+aws s3 mb s3://my-bucket
 ```
 
 26. List the contents of a bucket
 
 ```bash
-aws ls s3://my-bucket/                     # Displays the base contents of a bucket
-aws ls s3://my-bucket/and-folder/          # Displays the contents of a subdir
-aws ls s3://my-bucket/and-folder/*.png     # Displays all PNG files in the subdir
+aws s3 ls s3://my-bucket/                     # Displays the base contents of a bucket
+aws s3 ls s3://my-bucket/and-folder/          # Displays the contents of a subdir
+aws s3 ls s3://my-bucket/and-folder/*.png     # Displays all PNG files in the subdir
 ```
 
 27. Copy an object into S3
