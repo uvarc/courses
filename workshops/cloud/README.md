@@ -97,6 +97,16 @@ aws s3 sync myfolder s3://my-bucket/myfolder/   # Syncs local folder's contents 
 aws s3 sync s3://my-bucket/myfolder/ myfolder   # Syncs remote S3 folder down to local folder
 ```
 
+BONUS - Presign a S3 URL
+
+If you have a file that is stored privately, you can "presign" it with an expiration time to share with others.
+
+```
+aws s3 presign --expires-in 60 s3://my-bucket/file.pdf   # Presigns a URL that expires in 60 seconds
+```
+
+Try the URL immediately after creating it, then try it after it should expire.
+
 - - -
 
 ### Create a Public HTML Website in Amazon S3
@@ -268,6 +278,12 @@ http://YOUR-INSTANCE-IP/
 ```
 
 30. You should see the Apache welcome page.
+
+- - -
+
+31. BONUS - Stop your instance and restart it.
+
+32. BONUS - Stop your instance and resize it to another instance type.
 
 
 ### Conclusion
