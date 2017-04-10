@@ -55,8 +55,8 @@ AWS Secret Key: `+/ZAnoU72N3ICdOVfO6WF4CdjpZhaWDD2Dv63Otf`
 ### S3 commands in the AWS Command-Line Tools
 20. Install the AWS CLI in your terminal. Visit https://aws.amazon.com/cli/ for more instructions for your platform.
 21. Setup your AWS CLI by running `aws configure` in your terminal.
-22. Follow the setup instructions, and paste in your AWS Secret and AWS Secret Key.
-23. To work with S3, use the `aws s3` command. For example, to get help:
+22. Follow the setup instructions, and paste in the AWS Key and AWS Secret Key from the top of this page. Enter `us-west-2` as your default region, and `JSON` as your preferred output type.
+23. Each AWS service has a separate sub-command. To work with S3, use the `aws s3` sub-command. For example, to get help:
 
 ```bash
 aws s3 help
