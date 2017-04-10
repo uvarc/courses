@@ -12,6 +12,7 @@ In this workshop you will learn the basic functionality of two of the most found
   * [Bootstrapping an EC2 instance for launch](#bootstrapping-your-instance).
   * [Using a web browser to access your instance](#using-a-web-browser-to-access-your-instance).
   * [Using SSH to log into your instance](#using-ssh-to-log-into-your-instance).
+* [Further Resources](#resources)
 
 - - -
 
