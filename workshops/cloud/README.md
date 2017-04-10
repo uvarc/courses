@@ -225,9 +225,10 @@ gdebi --n rstudio-server-1.0.136-amd64.deb
 http://YOUR-INSTANCE-IP:8787/
 ```
 
+24. You can log into your RStudio Server using the username "rstudio" and the password "rstudio".
+
 ### Using SSH to log into your instance
 
-24. You can log into your RStudio Server using the username "rstudio" and the password "rstudio".
 25. Now let's SSH into the instance you created.
 
 Mac / Linux users:
