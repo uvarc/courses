@@ -299,3 +299,9 @@ Congratulations! You have successfully done the following in EC2:
 * Customized an EC2 security group.
 * Accessed your instance through a web browser.
 * Accessed your instance via SSH.
+
+
+# Resources
+
+- [AWS Services in Plain English](https://www.expeditedssl.com/aws-in-plain-english): Translates Amazon's catchy trademark names into what the service _should have_ been called. 
+- http://www.ec2instances.info/: Easy EC2 Instance Comparison 
