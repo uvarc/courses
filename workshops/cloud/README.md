@@ -16,6 +16,7 @@ In this workshop you will learn the basic functionality of two of the most found
 - - -
 
 AWS Key: `AKIAII7O5SOFPYC3NMWQ`
+
 AWS Secret Key: `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`
 
 - - -
