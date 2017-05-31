@@ -3,10 +3,9 @@
 In this workshop you will learn how to create and use Docker containers. Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
 * Docker Operations
-  * Docker Commands
+  * [Docker Commands](#docker-commands)
   * Creating Containers
   * Running Containers
-  * [Using an S3 bucket as a static website](#create-a-public-html-website-in-amazon-s3).
 
 - - -
 
