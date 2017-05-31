@@ -21,15 +21,21 @@ Docker is available for Windows, Mac, and Linux. Download the appropriate Docker
 2. Open a terminal or command-line prompt for the following steps.
 3. Docker command reference. This will show you all the possible commands:
 
-    docker
+```bash
+docker
+```
 
 4. List all container images you have downloaded:
 
-    docker images
+```bash
+docker images
+```
 
 5. Pull a container you want to run. In this case, let's run the `nginx` web server:
 
-    docker pull nginx
+```bash
+docker pull nginx
+```
 
 6. List all container images you have downloaded. You should now see the nginx image:
 
@@ -42,19 +48,25 @@ nginx               latest              6b914bbcb89e        3 months ago        
 
 7. Run a container image:
 
-    docker run -d nginx
+```bash
+docker run -d nginx
+```
 
 This runs the container as a daemon (service). But you may want to expose the container to a specific port locally, so that you can interact with it.
 For example, if you wanted to expose nginx locally over port 80, enter this:
 
-    docker run -d -p 8080:80 nginx
+```bash
+docker run -d -p 8080:80 nginx
+```
 
 The -p 8080:80 flag publishes your local computer's port 8080 with the container's port 80.
 
 Another useful flag for runtime is a volume mapping, so that your running container can read or write to portions of your local computer's filesystem.
 So, extending the earlier command:
 
-    docker run -d -p 8080:80 -v /User/local/dir:/var/www/html nginx
+```bash
+docker run -d -p 8080:80 -v /User/local/dir:/var/www/html nginx
+```
 
 8. View all running containers:
 
