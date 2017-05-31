@@ -2,10 +2,10 @@
 
 In this workshop you will learn how to create and use Docker containers. Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
-* Docker Operations
-  * [Docker Commands](#docker-commands)
-  * Creating Containers
-  * Running Containers
+* [Install Docker](#install-docker)
+* [Docker Commands](#docker-commands)
+* [Running Containers](#running-containers)
+* [Creating Containers](#creating-containers)
 
 - - -
 
@@ -19,7 +19,7 @@ Docker is available for Windows, Mac, and Linux. Download the appropriate Docker
 ### Docker Commands
 1. Make sure Docker is running. You should see an icon in your toolbar that indicates Docker's status.
 2. Open a terminal or command-line prompt for the following steps.
-3. Docker command reference. This will show you all the possible commands:
+3. Docker command reference. This will show you all possible commands:
 
 ```bash
 docker
@@ -52,22 +52,6 @@ nginx               latest              6b914bbcb89e        3 months ago        
 docker run -d nginx
 ```
 
-This runs the container as a daemon (service). But you may want to expose the container to a specific port locally, so that you can interact with it.
-For example, if you wanted to expose nginx locally over port 80, enter this:
-
-```bash
-docker run -d -p 8080:80 nginx
-```
-
-The -p 8080:80 flag publishes your local computer's port 8080 with the container's port 80.
-
-Another useful flag for runtime is a volume mapping, so that your running container can read or write to portions of your local computer's filesystem.
-So, extending the earlier command:
-
-```bash
-docker run -d -p 8080:80 -v /User/local/dir:/var/www/html nginx
-```
-
 8. View all running containers:
 
 ```
@@ -77,9 +61,51 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 1d17f542be53        rocker/rstudio      "/init"                  18 hours ago        Up 18 hours               0.0.0.0:8787->8787/tcp   elegant_banach
 ```
 
-### Creating Containers
+9. Stop a container:
+
+```bash
+docker stop 1d17f
+```
+
+10. Remove a container image:
+
+```bash
+docker rmi nginx
+```
 
 ### Running Containers
+
+11. **Detached and Interactive Modes** - Notice that in the earlier `nginx` example, you ran it with the `-d` flag, which means the container runs independently in detached or daemon mode. The other option is to run it in interactive mode, which is equivalent to logging into the container and working from within it.
+
+Detached mode:
+
+```bash
+docker run -d nginx
+```
+
+```bash
+docker run -it nginx /bin/bash
+```
+
+Interactive mode requires that you specify a shell to enter, in this case the common `bash` shell.
+
+12. **Ports** - You may want to expose the container to a specific port locally, so that you can interact with it.
+For example, if you wanted to expose nginx locally over port 80, enter this:
+
+```bash
+docker run -d -p 8080:80 nginx
+```
+
+The -p 8080:80 flag maps your local computer's port 8080 with the container's port 80. Browse to http://localhost:8080/ and see the results.
+
+13. **Volumes** - Another useful flag for runtime is a volume mapping, so that your running container can read or write to portions of your local computer's filesystem.
+So, extending the earlier command:
+
+```bash
+docker run -d -p 8080:80 -v /User/local/dir:/var/www/html nginx
+```
+
+### Creating Containers
 
 ### Conclusion
 Congratulations! You have successfully done the following in Docker:
