@@ -85,9 +85,10 @@ docker run -d nginx
 
 ```bash
 docker run -it nginx /bin/bash
+root@7ee278e39202:/#
 ```
 
-Interactive mode requires that you specify a shell to enter, in this case the common `bash` shell.
+Interactive mode requires that you specify a shell to enter, in this case the common `bash` shell. Note that the command immediately drops you into the shell session. Type `exit` to leave the container.
 
 12. **Ports** - You may want to expose the container to a specific port locally, so that you can interact with it.
 For example, if you wanted to expose nginx locally over port 80, enter this:
@@ -97,6 +98,8 @@ docker run -d -p 8080:80 nginx
 ```
 
 The -p 8080:80 flag maps your local computer's port 8080 with the container's port 80. Browse to http://localhost:8080/ and see the results.
+
+**BONUS** - Map your container to a different port and test the results. Remember that the `nginx` container will always listen for requests on port 80.
 
 13. **Volumes** - Another useful flag for runtime is a volume mapping, so that your running container can read or write to portions of your local computer's filesystem.
 So, extending the earlier command:
