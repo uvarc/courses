@@ -12,6 +12,7 @@ In this workshop you will learn the basic functionality of two of the most found
   * [Bootstrapping an EC2 instance for launch](#bootstrapping-your-instance).
   * [Using a web browser to access your instance](#using-a-web-browser-to-access-your-instance).
   * [Using SSH to log into your instance](#using-ssh-to-log-into-your-instance).
+* [Further Resources](#resources)
 
 - - -
 
@@ -299,3 +300,10 @@ Congratulations! You have successfully done the following in EC2:
 * Customized an EC2 security group.
 * Accessed your instance through a web browser.
 * Accessed your instance via SSH.
+
+
+# Resources
+
+- [AWS Services in Plain English](https://www.expeditedssl.com/aws-in-plain-english): Translates Amazon's catchy trademark names into what the service _should have_ been called. 
+- http://www.ec2instances.info/: Easy EC2 Instance Comparison 
+- [Open guide to AWS services](https://github.com/open-guides/og-aws#readme): very informative, well-organized, and concise guide to AWS's key services.
