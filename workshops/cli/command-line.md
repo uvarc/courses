@@ -5,6 +5,10 @@ Requirements:
 * MacOS / Linux users: Terminal
 * Windows: PuTTY [[Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)]
 
+Connect:
+
+    ssh user@host
+
 ## Navigating the file system
 
 Learn your way around without feeling stuck. These commands help you change directories and view their content.
