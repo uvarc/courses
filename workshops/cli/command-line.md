@@ -70,12 +70,20 @@ Show only the last few lines of a file:
 
     tail myfile.txt
 
+Make a directory (folder):
+
+    mkdir foldername
+
+Change into that directory:
+
+    cd foldername
+
 POSIX ownership bits:
 
-    drwxr-xr-x   5 user  staff      170 Feb  3  2017 gocode
+    -rwxr-xr-x   5 user  staff     1701 Feb  3  2017 codefile.txt
     drwxr-xr-x  12 user  staff      408 Jun  8 09:41 miniconda2
     drwxr-xr-x   5 user  staff      170 Jun  8 09:36 sandbox
-    drwxr-xr-x   4 user  staff      136 Apr 28 09:40 scripts
+    drwxrwxrwx   4 user  staff      136 Apr 28 09:40 scripts
 
 Copy command:
 
@@ -93,9 +101,18 @@ Copy just .txt files into a folder:
 
     cp *.txt folder/
 
+Move (rename) a file:
+
+    mv firstfile.txt secondfile.txt
+
 Move all .txt files into a folder:
 
     mv *.txt folder/
+
+Move all .txt files that start with the letter "M" into a folder:
+
+    mv m*.txt folder/
+    mv M*.txt folder/
 
 ## Redirecting Input/Output
 
@@ -123,7 +140,33 @@ Or you can append a file to another file:
 
 ## Configuring your environment
 
-    $VARIABLES
+### Environment Variables
+
+    echo $HOSTNAME
+    echo $PATH
+    echo $HOME
+    echo $SHELL
+    echo $HISTSIZE
+
+### Shell Variables
+
+Set your own:
+
+    FNAME=your-first-name
+    export FNAME
+    echo $FNAME
+
+Now incorporate variables into other commands:
+
+    echo "Hello there $FNAME, how are you today?"
+
+Or make that look prettier:
+
+    echo -e "\n\n Hello there $FNAME, how are you doing today?\n\n"
+
+
+### Package Managers
+
     apt install xxxxx
     pip install xxxxx
 
@@ -131,6 +174,7 @@ Or you can append a file to another file:
 
 Processes running:
 
+    top
     htop
 
 Current date-time:
