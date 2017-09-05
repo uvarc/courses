@@ -11,7 +11,7 @@ Connect:
 
 ## Navigating the file system
 
-Learn your way around without feeling stuck. These commands help you change directories and view their content.
+Learn your way around without feeling stuck. These commands help you change directories and view their contents.
 
 List files/folders in a directory:
 
@@ -51,10 +51,6 @@ Switch back to the directory I was in before this one:
 
     cd -
 
-Clear the screen. Get rid of the chaos!:
-
-    clear
-
 
 ## Changing the file system
 
@@ -73,6 +69,10 @@ Show only the first 20 lines or so of a file:
 Show only the last few lines of a file:
 
     tail myfile.txt
+
+Page through a longer file:
+
+    cat myfile.txt | more
 
 Make a directory (folder):
 
@@ -141,6 +141,22 @@ Similarly, you can cat out the contents of files into other files to overwrite t
 Or you can append a file to another file:
 
     cat myfile.txt >> fileD
+
+
+## Managing your session
+
+Clear the screen. Get rid of the chaos!:
+
+    clear
+
+Look at all your previous commands with `history`:
+
+    history
+
+Note the line numbers. You can reuse a line by prepending a `!` to it:
+
+    !13  # Executes the same command as line 13 in your history
+
 
 ## Configuring your environment
 
