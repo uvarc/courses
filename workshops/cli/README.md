@@ -9,6 +9,15 @@ Connect:
 
     ssh user@host
 
+Contents:
+
+* [Navigating the File System](#navigating-the-file-system)
+* [Changing the File System](#changing-the-file-system)
+* [Redirecting Input/Output](#redirecting-inputoutput)
+* [Managing Your Session](#managing-your-session)
+* [Configuring Your Environment](#configuring-your-environment)
+
+
 ## Navigating the file system
 
 Learn your way around without feeling stuck. These commands help you change directories and view their contents.
