@@ -60,6 +60,7 @@ Switch back to the directory I was in before this one:
 
     cd -
 
+
 ## Changing the file system
 
 Create a file without any contents:
@@ -130,8 +131,17 @@ Move all .txt files into a folder:
 
 Move all .txt files that start with the letter "M" into a folder:
 
-    mv m*.txt folder/
-    mv M*.txt folder/
+    mv m*.txt folder1/
+    mv M*.txt folder2/
+
+Copy a folder:
+
+    cp -R folder1 folder2
+
+Move a folder:
+
+    mv folder1 folder2
+
 
 ## Redirecting Input/Output
 
@@ -157,6 +167,19 @@ Or you can append a file to another file:
 
     cat myfile.txt >> fileD
 
+Overwrite NULL (empty) to an existing file:
+
+    cat /dev/null > fileB
+
+Find a word in a file
+
+    cat myfile.txt | grep "dog"
+
+You can also redirect backwards, feeding a file (for example) into a command:
+
+    mysql db_name < sql_script.sql
+
+
 
 ## Find Things
 
@@ -165,15 +188,15 @@ Find where a program is. Where is `bash`?
     whereis bash
     which bash
 
-Find a word in a file
-
-    cat myfile.txt | grep "dog"
-
 Find a word somewhere in a stack of files
 
     grep "dog" ./*
 
-Find a word somewhere in a stack of files, possibly within deeper folders
+Find a word somewhere in a stack of text files
+
+    grep "dog" /home/myaccount/*.txt
+
+Find a word somewhere in a stack of files, possibly within deeper folders (recursively)
 
     grep -r "dog" ./*
 
