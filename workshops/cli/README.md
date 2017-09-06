@@ -14,6 +14,8 @@ Contents:
 * [Navigating the File System](#navigating-the-file-system)
 * [Changing the File System](#changing-the-file-system)
 * [Redirecting Input/Output](#redirecting-inputoutput)
+* [Archive/Unarchive Things](#archiveunarchive-things)
+* [Find Things](#find-things)
 * [Managing Your Session](#managing-your-session)
 * [Configuring Your Environment](#configuring-your-environment)
 
@@ -150,7 +152,10 @@ Move a folder:
 
 ### Symbolic Links
 
-Create a symbolic link
+Create a symbolic link. What is a symbolic link? It's a virtual path to another file or directory in your system.
+
+    ln -s realfile.txt symbolic-file.txt
+    ln -s directory_one/ sybmolic_directory/
 
 
 ## Redirecting Input/Output
@@ -189,7 +194,28 @@ You can also redirect backwards, feeding a file (for example) into a command:
 
     mysql db_name < sql_script.sql
 
+## Archive/Unarchive Things
 
+Zip:
+
+    zip new_archive.zip folder_to_zip/
+    zip new_archive.zip file1.txt file2.txt file3.txt ...
+
+Unzip:
+
+    unzip some_archive.zip
+
+Tar Compress (with Gzip)
+
+    tar -czf new_archive.tar.gz folder_to_tar/
+
+    Flags: (c) compress; (z) use gzip; (f) write to file
+
+Tar Decompress:
+
+    tar -xzf another_archive.tar.gz
+
+    Flags: (x) expand; (z) use gzip; (f) read from file
 
 ## Find Things
 
@@ -213,6 +239,8 @@ Find a word somewhere in a stack of files, possibly within deeper folders (recur
 Find something by name
 
     find ./ -name "1.txt"
+
+    Parameters: (./) this directory; (-name) look for this name in files and dirs
 
 Find a FILE by name (this looks for files with a name)
 
