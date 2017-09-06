@@ -7,7 +7,7 @@ Requirements:
 
 Connect:
 
-    ssh user@host
+    ssh user@shell.uvasomrc.io
 
 Contents:
 
@@ -196,8 +196,16 @@ Or make that look prettier:
 
 ### Package Managers
 
-    apt install xxxxx
-    pip install xxxxx
+    apt install <software-name>
+    pip install <package-name>
+
+Install a game
+
+    apt install pacman4console
+
+Play PacMan
+
+    /usr/games/pacman4console
 
 ## Understanding your environment
 
@@ -213,4 +221,5 @@ Current date-time:
 Uptime (how long in days/hours/minutes)
 
     uptime
+
 
