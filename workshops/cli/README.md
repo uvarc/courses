@@ -157,6 +157,28 @@ Move a folder:
 
     mv folder1 folder2
 
+### Delete Things
+
+Remove a file
+
+    rm myfile.txt
+
+Remove a file in a directory
+
+    rm directory_name/myfile.txt
+
+Remove all files in a directory
+
+    rm directory_name/*
+
+Remove a directory and everything in it
+
+    rm -R directory_name
+
+Some systems will then ask you to verify, by file, that you want to delete it. If you'd like to skip that, force it with the `f` flag
+
+    rm -Rf directory_name
+
 ### Symbolic Links
 
 Create a symbolic link. What is a symbolic link? It's a virtual path to another file or directory in your system.
