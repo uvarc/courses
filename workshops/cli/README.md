@@ -210,13 +210,15 @@ Note the line numbers. You can reuse a line by prepending a `!` to it:
 
 ### Shell Variables
 
-Set your own variable. To create a variable:
+Set your own variable:
+
 * SET it with a name and value
 * Use no spaces between characters
 * Declare a variable without the `$` sign
 * Then EXPORT it to make it available to other commands
 * Retrieve it by using the `$` reference
 
+Here is an example:
 
     FNAME=your-first-name
     export FNAME
