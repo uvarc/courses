@@ -63,9 +63,7 @@ Switch back to the directory I was in before this one:
 
 ## Changing the file system
 
-Create a file without any contents:
-
-    touch myfile.txt
+### View Things
 
 Show the contents of a file (concatenate):
 
@@ -82,6 +80,10 @@ Show only the last few lines of a file:
 Page through a longer file:
 
     cat myfile.txt | more
+
+Create a file without any contents:
+
+    touch myfile.txt
 
 Make a directory (folder):
 
@@ -105,6 +107,8 @@ Three levels of control:
 * Group - `rwx`
 * Other - `rwx`
 
+### Copy Things
+
 Copy command:
 
     cp myfile.txt newfile.txt
@@ -120,6 +124,8 @@ Copy everything in this directory to a folder:
 Copy just .txt files into a folder:
 
     cp *.txt folder/
+
+### Move Things
 
 Move (rename) a file:
 
@@ -141,6 +147,10 @@ Copy a folder:
 Move a folder:
 
     mv folder1 folder2
+
+### Symbolic Links
+
+Create a symbolic link
 
 
 ## Redirecting Input/Output
