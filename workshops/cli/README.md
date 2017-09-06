@@ -210,11 +210,17 @@ Note the line numbers. You can reuse a line by prepending a `!` to it:
 
 ### Shell Variables
 
-Set your own:
+Set your own variable. To create a variable, you have to SET it with a name and value, and then EXPORT it to make it available to other commands. When setting a variable, note you must have no spaces between characters. You declare a variable without the `$` sign, but then retrieve it by using the `$` reference.
 
     FNAME=your-first-name
     export FNAME
     echo $FNAME
+
+Or you can capture a phrase by wrapping it with `''` single quotes:
+
+    FULLNAME='My Full Name'
+    export FULLNAME
+    echo $FULLNAME
 
 Now incorporate variables into other commands:
 
