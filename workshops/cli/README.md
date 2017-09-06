@@ -92,10 +92,17 @@ Change into that directory:
 
 POSIX ownership bits:
 
-    -rwxr-xr-x   5 user  staff     1701 Feb  3  2017 codefile.txt
-    drwxr-xr-x  12 user  staff      408 Jun  8 09:41 miniconda2
-    drwxr-xr-x   5 user  staff      170 Jun  8 09:36 sandbox
-    drwxrwxrwx   4 user  staff      136 Apr 28 09:40 scripts
+    -rw-r--r-- 1 root root    60 Sep  1 16:24 data.tsv
+    -rw-r--r-- 1 root root 11251 Sep  1 16:23 longfile
+    drwxr-xr-x 2 root root  4096 Sep  1 16:24 myfolder
+    drwxr-xr-x 2 root root  4096 Sep  5 19:54 scripts
+    -rw-r--r-- 1 root root    22 Sep  1 16:23 shortfile
+
+Three levels of control:
+
+* Owner - `rwx` (Read / Write / Execute)
+* Group - `rwx`
+* Other - `rwx`
 
 Copy command:
 
