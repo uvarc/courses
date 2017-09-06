@@ -86,10 +86,16 @@ Page through a longer file:
 Create a file without any contents:
 
     touch myfile.txt
+    touch "my file with spaces.txt" ( <-- bad form )
+
+Use a simple text editor `nano`
+
+    nano myfile.txt
 
 Make a directory (folder):
 
     mkdir foldername
+    mkdir "here is a folder with spaces" ( <-- bad form )
 
 Change into that directory:
 
