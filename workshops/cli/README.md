@@ -133,6 +133,11 @@ Copy just .txt files into a folder:
 
     cp *.txt folder/
 
+Copy a folder:
+
+    cp -R folder1 folder2
+
+
 ### Move Things
 
 Move (rename) a file:
@@ -147,10 +152,6 @@ Move all .txt files that start with the letter "M" into a folder:
 
     mv m*.txt folder1/
     mv M*.txt folder2/
-
-Copy a folder:
-
-    cp -R folder1 folder2
 
 Move a folder:
 
