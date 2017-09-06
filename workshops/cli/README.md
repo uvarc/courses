@@ -60,7 +60,6 @@ Switch back to the directory I was in before this one:
 
     cd -
 
-
 ## Changing the file system
 
 Create a file without any contents:
@@ -152,6 +151,38 @@ Or you can append a file to another file:
     cat myfile.txt >> fileD
 
 
+## Find Things
+
+Find where a program is. Where is `bash`?
+
+    whereis bash
+    which bash
+
+Find a word in a file
+
+    cat myfile.txt | grep "dog"
+
+Find a word somewhere in a stack of files
+
+    grep "dog" ./*
+
+Find a word somewhere in a stack of files, possibly within deeper folders
+
+    grep -r "dog" ./*
+
+Find something by name
+
+    find ./ -name "1.txt"
+
+Find a FILE by name (this looks for files with a name)
+
+    find ./ -type f -name "1.txt"
+
+Find a DIRECTORY by name (recursive by default)
+
+    find ./ -type d -name "foo"
+
+
 ## Managing your session
 
 Clear the screen. Get rid of the chaos!:
@@ -209,12 +240,12 @@ Play PacMan
 
 ## Understanding your environment
 
-Processes running:
+Processes running
 
     top
     htop
 
-Current date-time:
+Current date-time
 
     date
 
@@ -222,4 +253,10 @@ Uptime (how long in days/hours/minutes)
 
     uptime
 
+Find other users on the system
 
+    w
+
+See when the last users logged in (interactive users)
+
+    last -i
