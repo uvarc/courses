@@ -249,12 +249,12 @@ Tar Decompress:
 
 ## Finding Things
 
-Find where a program is. Where is `bash`?
+Find a program. Where is `bash`?
 
     whereis bash
     which bash
 
-Find a word somewhere in a stack of files
+Find a word somewhere in a stack of files (any type of file)
 
     grep "dog" ./*
 
@@ -266,7 +266,7 @@ Find a word somewhere in a stack of files, possibly within deeper folders (recur
 
     grep -r "dog" ./*
 
-Find something by name
+Find something by name. This looks for files and directories with a specific name
 
     find ./ -name "1.txt"
 
