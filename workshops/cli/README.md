@@ -1,19 +1,20 @@
 # Introduction to the Command Line Interface (CLI)
 
-Requirements:
+## Requirements:
 
 * MacOS / Linux users: Terminal
 * Windows: PuTTY [[Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)]
 
-MacOS / Linux users:
+### MacOS / Linux users:
 
     ssh labuser@shell.uvasomrc.io
 
-Windows PuTTY users, in the "Host name" field of PuTTY, enter
+### Windows PuTTY users, in the "Host name" field of PuTTY, enter
 
     labuser@shell.uvasomrc.io
 
-Contents:
+
+## Contents:
 
 * [Navigating the File System](#navigating-the-file-system)
 * [Changing the File System](#changing-the-file-system)
