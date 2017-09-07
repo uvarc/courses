@@ -481,3 +481,8 @@ A simple example:
     qod=`curl -s http://quotes.rest/qod.json | jq -r .contents.quotes[0].quote`
     echo "  " $qod
     echo ""
+
+## More Information
+
+* SOM Research Computing - https://somrc.virginia.edu/
+* UVA Research Computing FAQ/Knowledgebase - https://discuss.rc.virginia.edu/
