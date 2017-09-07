@@ -18,7 +18,8 @@ Contents:
 * [Find Things](#find-things)
 * [Managing Your Session](#managing-your-session)
 * [Configuring Your Environment](#configuring-your-environment)
-
+* [Interacting with Other Systems](#interacting-with-other-systems)
+* [Basic Shell Scripting](#basic-shell-scripting)
 
 ## Navigating the file system
 
@@ -297,14 +298,6 @@ Note the line numbers. You can reuse a line by prepending a `!` to it:
 
 ## Configuring your environment
 
-### Environment Variables
-
-    echo $HOSTNAME
-    echo $PATH
-    echo $HOME
-    echo $SHELL
-    echo $HISTSIZE
-
 ### Shell Variables
 
 Set your own variable:
@@ -336,17 +329,46 @@ Or make that look prettier:
     echo -e "\n\n Hello there $FNAME, how are you doing today?\n\n"
 
 
+### Environment Variables
+
+Your login session also comes with several "environment" variables. Here are a few:
+
+    echo $HOSTNAME
+    echo $PATH
+    echo $HOME
+    echo $SHELL
+    echo $HISTSIZE
+
+These are created by the system. But you can also set your own by editing your `~/.bashrc` file.
+
+    export FLAVOR='vanilla'
+
+Then, to make use of this variable you could log out and back in again, or run this command:
+
+    source ~/.bashrc
+
+Now see if the variable is set
+
+    echo $FLAVOR    
+
+
 ### Package Managers
 
     apt install <software-name>
+    apt update
+    apt upgrade
+
     pip install <package-name>
+    pip install <package-name> --upgrade
 
 Install a game
 
-    apt install pacman4console
+    apt install bastet            (Tetris)
+    apt install pacman4console    (Pacman)
 
-Play PacMan
+Play a game
 
+    /usr/games/bastet
     /usr/games/pacman4console
 
 ## Understanding your environment
@@ -355,8 +377,9 @@ Processes running
 
     top
     htop
+    ps -al
 
-Current date-time
+Current date/time
 
     date
 
@@ -371,3 +394,82 @@ Find other users on the system
 See when the last users logged in (interactive users)
 
     last -i
+
+
+## Interacting with Other Systems
+
+You can retrieve web pages, files, data, other remote content using either `curl` or `wget`
+
+    apt install curl wget
+
+    curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5'
+    wget 'https://api.github.com/repos/stedolan/jq/commits?per_page=5'
+
+Note that `curl` lets you view the contents, and `wget` retrieves it as a file.
+
+You can pipe commands together with other tools, so that you can view and filter them (eliminate clutter)
+
+    apt install jq
+
+    curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq '.[0]'    
+
+
+Using `jq` limited to the first [0] record. Now limit to the first record, but only two fields
+
+    curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' \
+        | jq '.[0] | {message: .commit.message, name: .commit.committer.name}'
+
+
+The output is now something like this
+
+    {
+      "message": "Merge pull request #162 from stedolan. Closes #161",
+      "name": "Stephen Dolan"
+    }
+
+Or try it again with all records
+
+    curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' \
+        | jq '.[] | {message: .commit.message, name: .commit.committer.name}'
+
+
+Or grab a different field from the records
+
+    curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq -r .[].sha
+
+
+    7b81a836c31500e685d043729259affa8b670a87
+    c538237f4e4c381d35f1c15497c95f659fd55850
+    4a6241be0697bbe4ef420c43689c34af59e50330
+    1900c7bcac76777782505c89a032c18a65fcc487
+    578d536233b62884764b3c5c6cd42077958d6a49
+
+
+[Read more](https://discuss.rc.virginia.edu/t/jq-a-simple-json-parser/91) about basic usage of `jq`.
+
+
+## Basic Shell Scripting
+
+Scripts are simple ways of bundling up a series of commands to run in order. You can run your script manually, or scheduled to run automatically.
+
+The basics of a shell script:
+
+1. Create a text file with the path to `bash` in the first line, with a shebang `#!` prepended.
+2. Add shell commands below that, in the order you need and expect them to run.
+3. Assume the script is running from its current location, so directory paths need to be explicit.
+
+A simple example:
+
+    #!/bin/bash
+
+    clear
+    echo "Let me print something out for you, $FNAME"
+
+    sleep 3
+
+    clear
+
+    echo -e "Here is a quote of the day:\n\n"
+    qod=`curl -s http://quotes.rest/qod.json | jq -r .contents.quotes[0].quote`
+    echo "  " $qod
+    echo ""
