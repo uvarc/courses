@@ -18,17 +18,17 @@
 
 ## Contents:
 
-* [Navigating the File System](#navigating-the-file-system)
-* [Changing the File System](#changing-the-file-system)
-* [Redirecting Input/Output](#redirecting-inputoutput)
+* [Navigate the File System](#navigate-the-file-system)
+* [Change the File System](#change-the-file-system)
+* [Redirect Input/Output](#redirect-inputoutput)
 * [Archive/Unarchive Things](#archiveunarchive-things)
-* [Finding Things](#finding-things)
-* [Managing Your Session](#managing-your-session)
-* [Configuring Your Environment](#configuring-your-environment)
-* [Interacting with Other Systems](#interacting-with-other-systems)
+* [Find Things](#find-things)
+* [Manage Your Session](#manage-your-session)
+* [Configure Your Environment](#configure-your-environment)
+* [Interact with Other Systems](#interact-with-other-systems)
 * [Basic Shell Scripting](#basic-shell-scripting)
 
-## Navigating the file system
+## Navigate the file system
 
 Learn your way around without feeling stuck. These commands help you change directories and view their contents.
 
@@ -85,7 +85,7 @@ Switch back to the directory I was in before this one:
     cd -
 
 
-## Changing the file system
+## Change the file system
 
 ### View Things
 
@@ -196,7 +196,7 @@ Create a symbolic link. What is a symbolic link? It's a virtual path to another 
     ln -s directory_one/ sybmolic_directory/
 
 
-## Redirecting Input/Output
+## Redirect Input/Output
 
 Echo command writes arguments to output (the screen):
 
@@ -255,7 +255,7 @@ Tar Decompress:
 
     Flags: (x) expand; (z) use gzip; (f) read from file
 
-## Finding Things
+## Find Things
 
 Find a program. Where is `bash`?
 
@@ -289,7 +289,7 @@ Find a DIRECTORY by name (recursive by default)
     find ./ -type d -name "foo"
 
 
-## Managing your session
+## Manage your session
 
 Clear the screen. Get rid of the chaos!:
 
@@ -304,7 +304,7 @@ Note the line numbers. You can reuse a line by prepending a `!` to it:
     !13  # Executes the same command as line 13 in your history
 
 
-## Configuring your environment
+## Configure your environment
 
 ### Shell Variables
 
@@ -379,7 +379,8 @@ Play a game
     /usr/games/bastet
     /usr/games/pacman4console
 
-## Understanding your environment
+
+## Understand your environment
 
 Processes running
 
@@ -404,7 +405,7 @@ See when the last users logged in (interactive users)
     last -i
 
 
-## Interacting with Other Systems
+## Interact with Other Systems
 
 You can retrieve web pages, files, data, other remote content using either `curl` or `wget`
 
