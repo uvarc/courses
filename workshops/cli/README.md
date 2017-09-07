@@ -5,11 +5,13 @@
 * MacOS / Linux users: Terminal
 * Windows: PuTTY [[Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)]
 
-### MacOS / Linux users:
+## Connect:
+
+### MacOS / Linux users
 
     ssh labuser@shell.uvasomrc.io
 
-### Windows PuTTY users, in the "Host name" field of PuTTY, enter
+### Windows users, in the "Host name" field of PuTTY, enter
 
     labuser@shell.uvasomrc.io
 
