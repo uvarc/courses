@@ -42,6 +42,20 @@ List all files sorted by most recent edits:
 
     ls -alt
 
+POSIX ownership bits:
+
+    -rw-r--r-- 1 root root    60 Sep  1 16:24 data.tsv
+    -rw-r--r-- 1 root root 11251 Sep  1 16:23 longfile
+    drwxr-xr-x 2 root root  4096 Sep  1 16:24 myfolder
+    drwxr-xr-x 2 root root  4096 Sep  5 19:54 scripts
+    -rw-r--r-- 1 root root    22 Sep  1 16:23 shortfile
+
+Three levels of control:
+
+* Owner - `rwx` (Read / Write / Execute)
+* Group - `rwx`
+* Other - `rwx`
+
 Return the present working directory (where I am now):
 
     pwd
@@ -107,19 +121,6 @@ Change into that directory:
 
     cd foldername
 
-POSIX ownership bits:
-
-    -rw-r--r-- 1 root root    60 Sep  1 16:24 data.tsv
-    -rw-r--r-- 1 root root 11251 Sep  1 16:23 longfile
-    drwxr-xr-x 2 root root  4096 Sep  1 16:24 myfolder
-    drwxr-xr-x 2 root root  4096 Sep  5 19:54 scripts
-    -rw-r--r-- 1 root root    22 Sep  1 16:23 shortfile
-
-Three levels of control:
-
-* Owner - `rwx` (Read / Write / Execute)
-* Group - `rwx`
-* Other - `rwx`
 
 ### Copy Things
 
