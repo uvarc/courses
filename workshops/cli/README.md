@@ -7,7 +7,7 @@ Requirements:
 
 Connect:
 
-    ssh user@shell.uvasomrc.io
+    ssh labuser@shell.uvasomrc.io
 
 Contents:
 
@@ -15,7 +15,7 @@ Contents:
 * [Changing the File System](#changing-the-file-system)
 * [Redirecting Input/Output](#redirecting-inputoutput)
 * [Archive/Unarchive Things](#archiveunarchive-things)
-* [Find Things](#find-things)
+* [Finding Things](#finding-things)
 * [Managing Your Session](#managing-your-session)
 * [Configuring Your Environment](#configuring-your-environment)
 * [Interacting with Other Systems](#interacting-with-other-systems)
@@ -247,7 +247,7 @@ Tar Decompress:
 
     Flags: (x) expand; (z) use gzip; (f) read from file
 
-## Find Things
+## Finding Things
 
 Find where a program is. Where is `bash`?
 
