@@ -30,9 +30,11 @@ NoSQL databases share very few common characteristics. Perhaps the only one is t
 {% gist 1bece00a989f95411af423c940cac883 %}
 
 ### Aggregate-Oriented
+
 * Key-Value
 * Document
 * Column-Family
 
+### Node-Arc
 
 * Graph
