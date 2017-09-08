@@ -27,7 +27,7 @@ the same time, and ensures that the entire transaction completes successfully or
 
 NoSQL databases share very few common characteristics. Perhaps the only one is that they are **schema-less**.
 
-<script src="https://gist.github.com/nmagee/1bece00a989f95411af423c940cac883.js"></script>
+{% gist 1bece00a989f95411af423c940cac883 %}
 
 ### Aggregate-Oriented
 * Key-Value
