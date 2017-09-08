@@ -6,7 +6,21 @@
 
 ## Relational Databases
 
-Relational databases operate on the concept of tables, relations, indexes, SQL, and joins.
+Many users have at least heard of relational databases like:
+
+* MySQL / MariaDB
+* PostgreSQL
+* Microsoft SQL Server
+* Oracle
+
+Relational databases operate on the concepts of tables, relations, indexes, SQL, CRUD operations, and joins.
+
+    **CRUD**
+
+    C = Create
+    R = Read
+    U = Update
+    D = Delete
 
 Take the example of an online store, where data revolves around the ideas of items, orders and customers.
 When a customer makes a purchase in our store, the data from the transaction is actually broken apart into
@@ -19,11 +33,17 @@ any particular table has to be validated by data type (strings, integers, dates,
 and NULL before it can be inserted into a particular data table. This is going on across multiple tables at
 the same time, and ensures that the entire transaction completes successfully or is rolled back.
 
-> **Impedance Mismatch** - a set of conceptual and technical difficulties that are often encountered when a relational database management system.
+> **Impedance Mismatch** - a set of conceptual and technical difficulties that are often encountered when interacting with a relational database management system.
 
 
 
 ## NoSQL Databases
+
+### Aggregate-Oriented
+
+* Key-Value
+* Document
+* Column-Family
 
 NoSQL databases share very few common characteristics. Perhaps the only one is that they are **schema-less**. Typical
 aggregate-oriented NoSQL databases will store an aggregation in the form of strings or entire documents. That is usually in
@@ -39,7 +59,8 @@ Here are some sample entries from a simple Key-Value datastore:
     jobs_remaining            13
     ...                       ...
 
-Here is an example of a single entry written in JSON. Note that the entire entry (or "document") breaks down into a
+In the case of document NoSQL databases, the "value" portion of the entry can get quite large.
+Here is an example of an entry in JSON. Note that the entire entry (or "document") breaks down into a
 hierarchy of data: variables and their values, dictionaries of multiple values, 
 
     {
@@ -68,12 +89,6 @@ hierarchy of data: variables and their values, dictionaries of multiple values,
             "copyright": "2017-19 theysaidso.com"
         }
     }
-
-### Aggregate-Oriented
-
-* Key-Value
-* Document
-* Column-Family
 
 ### Node-Arc
 
