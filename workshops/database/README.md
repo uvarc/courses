@@ -25,9 +25,39 @@ the same time, and ensures that the entire transaction completes successfully or
 
 ## NoSQL Databases
 
-NoSQL databases share very few common characteristics. Perhaps the only one is that they are **schema-less**.
+NoSQL databases share very few common characteristics. Perhaps the only one is that they are **schema-less**. Typical
+aggregate-oriented NoSQL databases will store an aggregation in the form of strings or entire documents. That is often
+in a specific format or notation, such as JSON or XML.
 
-{% gist 1bece00a989f95411af423c940cac883 %}
+Here is an example of a single entry written in JSON. Note that the entire entry (or "document") breaks down into a
+hierarchy of data: variables and their values, dictionaries of multiple values, 
+
+    {
+        "success": {
+            "total": 1
+        },
+        "contents": {
+            "quotes": [
+                {
+                    "quote": "Remove the temptation to settle for anything short of what you deserve.",
+                    "length": "71",
+                    "author": "Lorii Myers",
+                    "tags": [
+                        "expectation",
+                        "inspire",
+                        "perfection"
+                    ],
+                    "category": "inspire",
+                    "date": "2017-09-08",
+                    "permalink": "https://theysaidso.com/quote/ZWrV624xU_q6_KYYlrQpYgeF/lorii-myers-remove-the-temptation-to-settle-for-anything-short-of-what-you-deser",
+                    "title": "Inspiring Quote of the day",
+                    "background": "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg",
+                    "id": "ZWrV624xU_q6_KYYlrQpYgeF"
+                }
+            ],
+            "copyright": "2017-19 theysaidso.com"
+        }
+    }
 
 ### Aggregate-Oriented
 
