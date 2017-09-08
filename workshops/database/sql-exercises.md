@@ -6,9 +6,9 @@
 2. Each statement must be a SELECT, INSERT, UPDATE, DELETE statement. You can perform multiple statements at the same time.
 3. Statements must end with `;` in order to be executed.
 4. SQL has special characters that help to order, filter, etc.
-  * The `*` (wildcard) character means ALL.
-  * The `%` character helps with matching portions of strings.
-
+    * The `*` (wildcard) character means ALL.
+    * The `%` character helps with matching portions of strings.
+5. Something else.
 
 ## Selecting Records
 
