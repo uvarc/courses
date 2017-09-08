@@ -26,8 +26,18 @@ the same time, and ensures that the entire transaction completes successfully or
 ## NoSQL Databases
 
 NoSQL databases share very few common characteristics. Perhaps the only one is that they are **schema-less**. Typical
-aggregate-oriented NoSQL databases will store an aggregation in the form of strings or entire documents. That is often
-in a specific format or notation, such as JSON or XML.
+aggregate-oriented NoSQL databases will store an aggregation in the form of strings or entire documents. That is usually in
+plain text, often in a specific format or notation, such as JSON or XML.
+
+Here are some sample entries from a simple Key-Value datastore:
+
+    Key                       Value
+    ----------------------------------------------------------
+    access_key                ABCDEfghijklmnop123456789xyzabc
+    secret_key                23481283852384128328a
+    current_count             472
+    jobs_remaining            13
+    ...                       ...
 
 Here is an example of a single entry written in JSON. Note that the entire entry (or "document") breaks down into a
 hierarchy of data: variables and their values, dictionaries of multiple values, 
