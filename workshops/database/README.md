@@ -91,3 +91,5 @@ hierarchy of data: variables and their values, dictionaries of multiple values,
 ### Node-Arc
 
 * Graph
+
+![Graph Database Properties](https://en.wikipedia.org/wiki/Graph_database#/media/File:GraphDatabase_PropertyGraph.png)
