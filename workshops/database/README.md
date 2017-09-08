@@ -15,12 +15,10 @@ Many users have at least heard of relational databases like:
 
 Relational databases operate on the concepts of tables, relations, indexes, SQL, CRUD operations, and joins.
 
-    **CRUD**
-
-    C = Create
-    R = Read
-    U = Update
-    D = Delete
+    C = Create   (Insert)
+    R = Read     (Select)
+    U = Update   (Update)
+    D = Delete   (Delete)
 
 Take the example of an online store, where data revolves around the ideas of items, orders and customers.
 When a customer makes a purchase in our store, the data from the transaction is actually broken apart into
