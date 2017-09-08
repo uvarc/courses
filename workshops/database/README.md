@@ -37,6 +37,8 @@ the same time, and ensures that the entire transaction completes successfully or
 
 ## NoSQL Databases
 
+
+
 ### Aggregate-Oriented
 
 * Key-Value
