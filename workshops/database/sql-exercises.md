@@ -40,6 +40,22 @@ number of filters -- by date, by value of a specific column
 
     SELECT * FROM labusers WHERE fname = 'Neal';
 
+Or we could find all rows where `flavor` contains the letter `C`:
+
+    SELECT * FROM labusers WHERE flavor LIKE '%c%';
+
 ## Describe a table
 
-    DESCRIBE <table-name>;
+    DESCRIBE labusers;
+
+Gives us output something like this:
+
+    +---------+--------------+------+-----+-------------------+----------------+
+    | Field   | Type         | Null | Key | Default           | Extra          |
+    +---------+--------------+------+-----+-------------------+----------------+
+    | id      | int(11)      | NO   | PRI | NULL              | auto_increment |
+    | fname   | varchar(50)  | YES  |     | NULL              |                |
+    | flavor  | varchar(20)  | YES  |     | NULL              |                |
+    | host    | varchar(100) | YES  |     | NULL              |                |
+    | updated | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
+    +---------+--------------+------+-----+-------------------+----------------+
