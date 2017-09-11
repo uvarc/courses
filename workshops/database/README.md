@@ -67,11 +67,13 @@ Here are some sample entries from a simple Key-Value datastore:
     secret_key                23481283852384128328a
     current_count             472
     jobs_remaining            13
+    last-winner               Darla Johnson
+    last-winner-date          08/17/2014 08:42:13.015 UTC
     ...                       ...
 
-In the case of document NoSQL databases, the "value" portion of the entry can get quite large.
+In the case of document NoSQL databases, the "value" portion of the entry can get much larger.
 Here is an example of an entry in JSON. Note that the entire entry (or "document") breaks down into a
-hierarchy of data: variables and their values, dictionaries of multiple values, 
+hierarchy of data: fields and their values, and dictionaries of multiple values, 
 
     {
         "success": {
