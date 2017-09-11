@@ -12,7 +12,7 @@ Data schema | A pre-set definition for data to be stored in. This is made of fie
 Data types | The specific kind of data being handled. This might be a date, a time, a number, a decimal, a string, a boolean value, etc.
 Key | A unique, identifying value in a single database entry.
 Relation | The way that two or more tables join in an RDBMS.
-Table | An aggregation of a specific set of data in an RDBMS which, when joined with other tables, forms a larger data view.
+Table | A listing of specific sets of data in an RDBMS which, when joined with other tables, forms a larger data view.
 
 ## Relational Databases (RDBMS)
 
