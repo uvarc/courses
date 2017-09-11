@@ -4,7 +4,15 @@
 
 ## Content
 
-## Relational Databases
+## Concepts
+
+Data schema | A pre-set definition for data to be stored in. This is made of fields and data types.
+Data types | The specific kind of data being handled. This might be a date, a time, a number, a decimal, a string, a boolean value, etc.
+Key | A unique, identifying value in a single database entry.
+Relation | The way that two or more tables join in an RDBMS.
+
+
+## Relational Databases (RDBMS)
 
 Many users have at least heard of relational databases like:
 
@@ -94,6 +102,6 @@ hierarchy of data: variables and their values, dictionaries of multiple values,
 
 * Graph
 
-![Graph DB 1](https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png)
-
 ![Graph DB 2](https://s3.amazonaws.com/uvasom-resources/courses/graph-nodes.png)
+
+![Graph DB 1](https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png)
