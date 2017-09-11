@@ -94,4 +94,6 @@ hierarchy of data: variables and their values, dictionaries of multiple values,
 
 * Graph
 
-![Graph DB](https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png)
+![Graph DB 1](https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png)
+
+![Graph DB 2](https://s3.amazonaws.com/uvasom-resources/courses/graph-nodes.png)
