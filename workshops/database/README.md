@@ -6,6 +6,8 @@
 
 ## Concepts
 
+Term | Definition
+---- | ----------
 Data schema | A pre-set definition for data to be stored in. This is made of fields and data types.
 Data types | The specific kind of data being handled. This might be a date, a time, a number, a decimal, a string, a boolean value, etc.
 Key | A unique, identifying value in a single database entry.
