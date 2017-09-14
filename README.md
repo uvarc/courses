@@ -1,3 +1,6 @@
 # Courses / Workshops
 
-* [Command-Line Workshop](https://github.com/uvasomrc/courses/tree/master/workshops/cli) - 9/7/2017
+## Cloud Workshop - 9/14/2017
+
+* [Exercises](https://github.com/uvasomrc/courses/tree/master/workshops/cloud)
+* [Login Credentials](https://discuss.rc.virginia.edu/t/cloud-workshop-9-14-2017-credentials/438)
