@@ -249,7 +249,7 @@ Mac / Linux users:
 * Open a terminal window.
 * Using the location of the private half of your SSH key and the IPv4 Public IP you copied earlier, enter this command:
 
-```ssh -i /where/is/your/key ubuntu@YOUR-PUBLIC-IP```
+```ssh labuser@YOUR-PUBLIC-IP```
 
 * Press RETURN. Accept the key signature of your instance. You should now be logged in.
 
@@ -257,10 +257,7 @@ Windows users:
 
 * Open PuTTY
 * In the "Host Name" field, log in as "ubuntu" with the IPv4 Public IP of your instance in this format: 
-```ubuntu@YOUR-PUBLIC-IP```
-* In the "Category" list expand SSH.
-* Click "Auth" (don't expand it)
-* In the "Private Key for Authentication" box, browse to the PPK file you created earlier.
+```labuser@YOUR-PUBLIC-IP```
 * Click OPEN.
 * Click YES to accept your instance's key signature. You should now be logged in.
 
