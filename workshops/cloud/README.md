@@ -191,7 +191,7 @@ Congratulations! You have successfully done the following in S3:
 ### Launch an EC2 instance
 
 4. From the EC2 dashboard, click **LAUNCH INSTANCE**.
-5. Find the **Ubuntu Server 16.04** instance and select it using the blue button.
+5. On the left, select "My AMIs". Find the AWS Workshop instance and select it using the blue button.
 6. Select Instance type **t2.medium**. Take note of other instance types (sizes) available to you.
 7. Click **NEXT: Configure Instance Details**.
 
