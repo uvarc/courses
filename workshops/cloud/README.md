@@ -170,24 +170,6 @@ Congratulations! You have successfully done the following in S3:
 
 - - -
 
-### Set up SSH Keypairs
-
-**Mac / Linux users:**
-* If this is a new AWS account, you do not yet have any SSH keys created. SSH key pairs are a secure way of signing into your EC2 instance, instead of a username and password.
-* From the EC2 dashboard, select the "Key Pairs" menu item down the lefthand side of the page.
-* Click on **Create Keypair**, and give it a memorable name. Then click "Create".
-* The private half of the kaypair will now be immediately downloaded to your browser. Store this half in a safe location on your computer. The public half of the key pair is now in your AWS account.
-
-**Windows users:**
-* Windows users accessing Linux instances using SSH need to use PuTTy. PuTTy requires a special format of SSH key that you can create yourself. PuTTy (http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-* Follow the instructions in Step 5 (https://www.howtoforge.com/ssh_key_based_logins_putty_p2#-generate-a-privatepublic-key-pair) to create a PuTTY-compatible set of SSH keys. 
-* Save the private key to your local computer.
-* Copy the public key to your clipboard.
-* From the EC2 dashboard, select the "Key Pairs" menu item down the lefthand side of the page.
-* Select "Import Key Pair" and then paste the public half of your key into the text input. Give it a name and click IMPORT. This SSH key will be available to you in the future as you create EC2 instances.
-
-- - -
-
 ### Launch an EC2 instance
 
 4. From the EC2 dashboard, click **LAUNCH INSTANCE**.
@@ -224,7 +206,7 @@ gdebi --n rstudio-server-1.0.136-amd64.deb
 15. Note that security groups are an important way you control visibility and access to your instance. Some ports and services, such as web servers (port 80) are normally visible to "Anywhere", whereas administrative ports such as 22 are normally restricted to specific sources.
 16. Click **Review and Launch**.
 17. Review your instance settings (which you can change if necessary, taking you through the setup wizard again). Once ready, click the blue **Launch** button.
-18. Finally, confirm the SSH key you will be using to access this instance. You must specify a key pair (such as the one you created in the steps above), and check the acknowledgement box before you can click **Launch Instances**.
+18. Finally, select the Linux SSH key and check the acknowledgement box before you can click **Launch Instances**.
 19. Your server is now being created and configured! Take a short break (3-5 minutes) while your server is built.
 20. Click on **View Instances**, or select "Instances" from the lefthand navigation.
 
