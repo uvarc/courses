@@ -1,4 +1,4 @@
-# Introduction to Docker - Workshop
+# Introduction to Docker/Containers
 
 In this workshop you will learn how to create and use Docker containers. Follow the lab instructions below at your own pace. Please raise your hand or get the attention of an instructor if you have any questions.
 
@@ -9,14 +9,12 @@ In this workshop you will learn how to create and use Docker containers. Follow 
 
 - - -
 
-## Docker Containers
-
-### Install Docker
+## Install Docker
 Docker is available for Windows, Mac, and Linux. Download the appropriate Docker Edition for your platform directly from Docker. We suggest the CE "Community Edition."
 
 [Download Docker](https://www.docker.com/)
 
-### Docker Commands
+## Docker Commands
 1. Make sure Docker is running. You should see an icon in your toolbar that indicates Docker's status.
 2. Open a terminal or command-line prompt for the following steps.
 3. Docker command reference. This will show you all possible commands:
@@ -73,7 +71,7 @@ docker stop 1d17f
 docker rmi nginx
 ```
 
-### Running Containers
+## Running Containers
 
 11. **Detached and Interactive Modes** - Notice that in the earlier `nginx` example, you ran it with the `-d` flag, which means the container runs independently in detached or daemon mode. The other option is to run it in interactive mode, which is equivalent to logging into the container and working from within it.
 
@@ -108,9 +106,56 @@ So, extending the earlier command:
 docker run -d -p 8080:80 -v /User/local/dir:/var/www/html nginx
 ```
 
-### Creating Containers
+## Creating Containers
 
-### Conclusion
+# Creating Containers
+
+If you cannot find just the right container, you can always build your own. There are two ways to do this:
+
+1. **Pull Images and Customize** - Download a container image, run it and log into it, and customize as if it were your own custom virtual machine. Then, save the container for later deployment. Instructions for interactively logging into a container can be found above.
+
+    * Pull a base container you want to start with, such as Ubuntu, CentOS, Amazon Linux, Yocto, etc.
+
+    * Run the container interactively so that you can install packages and code, and customize the image from within.
+
+    * Finally, when you exit the container and stop it, save it using the  [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit/)  command. At this point your updated container is versioned (much like a git repository) and can be pushed to Docker Hub if you want to share or store it.
+
+2. **Write your own Dockerfile** - Alternatively, you can write a custom `Dockerfile` and build the container from scratch, using `docker build`. More on Docker files and builds can be found at https://docs.docker.com/engine/getstarted/step_four/. This allows Dockerfiles to be shared as snippets of code rather than as full container images, comparable to a bootstrapping script you might use when instantiating a virtual server instance.
+
+    **Step 1** - Create a text file called `Dockerfile` with contents such as:
+
+```bash
+# Use an official Python runtime as a base image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+
+* **Step 2** - Then build your container based on your `Dockerfile`:
+
+```bash
+docker build -t mycontainer .
+```
+
+- - -
+
+## Conclusion
 Congratulations! You have successfully done the following in Docker:
 
 * A
