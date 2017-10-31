@@ -14,28 +14,16 @@ Docker is available for Windows, Mac, and Linux. Download the appropriate Docker
 
 ## Docker Commands
 
-pull
-images
-rmi
-
-run
-rm
-start
-stop
-
-inspect
-
-link
-hub
-commit / push
-swarm
-
 1. Make sure Docker is running. You should see an icon in your toolbar that indicates Docker's status.
 2. Open a terminal or command-line prompt for the following steps.
 3. Docker command reference. This will show you all possible commands:
 
 ```bash
 docker
+```
+
+```bash
+docker pull ubuntu
 ```
 
 ```bash
@@ -137,6 +125,12 @@ If you cannot find just the right container, you can always build your own. Ther
 
     * Finally, when you exit the container and stop it, save it using the  [`docker commit`](https://docs.docker.com/engine/reference/commandline/commit/)  command. At this point your updated container is versioned (much like a git repository) and can be pushed to Docker Hub if you want to share or store it.
 
+```bash
+docker login
+docker tag <IMAGE_ID> <USERNAME>/mycontainer:devel
+docker push <USERNAME>/mycontainer
+```
+
 2. **Write your own Dockerfile** - Alternatively, you can write a custom `Dockerfile` and build the container from scratch, using `docker build`. More on Docker files and builds can be found at https://docs.docker.com/engine/getstarted/step_four/. This allows Dockerfiles to be shared as snippets of code rather than as full container images, comparable to a bootstrapping script you might use when instantiating a virtual server instance.
 
     **Step 1** - Create a text file called `Dockerfile` with contents such as:
@@ -145,22 +139,31 @@ If you cannot find just the right container, you can always build your own. Ther
 # Use an official Python runtime as a base image
 FROM python:2.7-slim
 
+# Who maintains this image
+MAINTAINER Neal Magee "nmagee@virginia.edu"
+
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 ADD . /app
 
+# or add just a single file from the current directory into /app
+ADD myscript.sh /app/
+
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
+RUN pip install awscli boto3
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Define environment variable
+# Define environment variables
 ENV NAME World
+ENV NEXTID 12345
 
 # Run app.py when the container launches
+# Note that each command and parameter must be isolated.
 CMD ["python", "app.py"]
 ```
 
@@ -169,13 +172,6 @@ CMD ["python", "app.py"]
 ```bash
 docker build -t mycontainer .
 ```
-
-## Conclusion
-Congratulations! You have successfully done the following in Docker:
-
-* A
-* B
-* C
 
 ## Reference
 
