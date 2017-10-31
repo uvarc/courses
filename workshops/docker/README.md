@@ -7,8 +7,6 @@ In this workshop you will learn how to create and use Docker containers. Follow 
 * [Running Containers](#running-containers)
 * [Creating Containers](#creating-containers)
 
-- - -
-
 ## Install Docker
 Docker is available for Windows, Mac, and Linux. Download the appropriate Docker Edition for your platform directly from Docker. We suggest the CE "Community Edition."
 
@@ -38,6 +36,10 @@ swarm
 
 ```bash
 docker
+```
+
+```bash
+docker run ubuntu /bin/echo 'Hello world'
 ```
 
 4. List all container images you have downloaded:
@@ -168,16 +170,12 @@ CMD ["python", "app.py"]
 docker build -t mycontainer .
 ```
 
-- - -
-
 ## Conclusion
 Congratulations! You have successfully done the following in Docker:
 
 * A
 * B
 * C
-
-- - -
 
 ## Reference
 
