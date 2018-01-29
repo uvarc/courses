@@ -94,8 +94,7 @@ Refer `man` page for more ...
 man grep
 ```
 
-
-The real power: `grep` supports regular expressions, a step beyond wildcards!
+**The real power: `grep` supports regular expressions, a step beyond wildcards!**
 
 Refer to the cheatsheet. 
 
@@ -126,7 +125,7 @@ Numeric sort:
 sort -n
 ```
 
-Reserve order:
+Reverse order:
 ```
 sort -r
 ```
