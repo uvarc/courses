@@ -1,19 +1,15 @@
 # Additional Unix Commands
 
-Before we begin the next session, please [download]() the data archive.  
+Before we begin the next session, lets download example data  
 Use `tar` to decompress the downloaded gzipped tarball:
 ```
-$ tar [options ???] data_archive.tar.gz
+wget ""
+tar [options ???] data_archive.tar.gz
 ```
 
 Lets look at its contents:
 ```
-$ ls data_archive
-
-drwxrwx---  2 <user>  staff    68B Jan 29 12:43 scripts		# directory containing scripts
-drwxrwx---  2 <user>  staff    68B Jan 29 13:09 tools		# directory containing software
-drwxrwx---  5 <user>  staff   170B Jan 29 17:34 data		# direcotry containing data files
-
+$ ls data
 ```
 
 
@@ -28,10 +24,10 @@ The `grep` utility searches any given input files, selecting lines that match on
 grep [option(s)] [pattern] [filename]
 ```
 
-Lets look at some options on an example file in the ./data_archive/data directory: `exampleFile_grep.txt`
+Lets look at some options on an example file in the ./data directory: `exampleFile_grep.txt`
 
 ```
-$ cat ./data_archive/data/exampleFile_grep.txt
+$ cat ./data/exampleFile_grep.txt
 Lets have fun with grep!
 THIS LINE IS WRITTEN IN UPPER CASE.
 this line is written in lower case.
@@ -199,27 +195,27 @@ Be careful: `uniq` expects duplicate lines to be adjecent.
 
 ## Exercises: 
 
-1. Count the number of lines of file `./data_archive/data/sample_transcripts.gtf`
+1. Count the number of lines of file `./data/sample_transcripts.gtf`
 
-2. Print lines 2501 to 2750 of file `./data_archive/data/sample_transcripts.gtf`
+2. Print lines 2501 to 2750 of file `./data/sample_transcripts.gtf`
 
-3. Count number of transcripts with read_support of "yes" in file `./data_archive/data/sample_transcripts.gtf`  
+3. Count number of transcripts with read_support of "yes" in file `./data/sample_transcripts.gtf`  
 
-4. Print gene_id and FPKM value of top10 genes with highest FPKM values in file `./data_archive/data/sample_genes.fpkm_tracking`
+4. Print gene_id and FPKM value of top10 genes with highest FPKM values in file `./data/sample_genes.fpkm_tracking`
 
-5. Print total number of species represented in `./data_archive/data/16SMicrobial.fasta` 
+5. Print total number of species represented in `./data/16SMicrobial.fasta` 
 
 **Your turn:**
 
-6. Count the number of reads mapped to transcripts on every chromosome in file `./data_archive/data/sample_transcripts.gtf`
+6. Count the number of reads mapped to transcripts on every chromosome in file `./data/sample_transcripts.gtf`
 
-7. Calculate a histogram of various Lactobacilli species in the 16S microbial database in file `./data_archive/data/16SMicrobial.fasta`. Print top 5 species.
+7. Calculate a histogram of various Lactobacilli species in the 16S microbial database in file `./data/16SMicrobial.fasta`. Print top 5 species.
 
-8. Identify reference sequences belonging to Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database `./data_archive/data/16SMicrobial.fasta` Save the sequences in a new file `16SMicrobial.subset.fasta`
+8. Identify reference sequences belonging to Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database `./data/16SMicrobial.fasta` Save the sequences in a new file `16SMicrobial.subset.fasta`
 
-9. Print email address of Instructors teaching workshops that are part of _Bioinformatics on HPC_ track. The workshop details are in `./data_archive/data/somrc_spring2018_workshops.txt` while the contact information of instructors is in `./data_archive/data/somrc_instructors.txt`
+9. Print email address of Instructors teaching workshops that are part of _Bioinformatics on HPC_ track. The workshop details are in `./data/somrc_spring2018_workshops.txt` while the contact information of instructors is in `./data/somrc_instructors.txt`
  
-10. Typical NGS experimental design will include multiplexing of numerous samples to increase throughput. This step involves attaching a unique barcode (short nucleotide sequence) to the end of DNA fragments and sequencing everything in a massively parallel way. The first step of data analysis is to separate reads into sample-specific files. The file `./data_archive/data/miseq_raw.fasta` has data from a multiplexed sequencing experiment, with a 8bp barcode attached at the beginning of each read. Find how many reads are sequenced for each sample. 
+10. Typical NGS experimental design will include multiplexing of numerous samples to increase throughput. This step involves attaching a unique barcode (short nucleotide sequence) to the end of DNA fragments and sequencing everything in a massively parallel way. The first step of data analysis is to separate reads into sample-specific files. The file `./data/miseq_raw.fasta` has data from a multiplexed sequencing experiment, with a 8bp barcode attached at the beginning of each read. Find how many reads are sequenced for each sample. 
 
 
 ## Command-Line BLAST 
@@ -268,14 +264,14 @@ To perform sequence alignment locally on a custom database, we need to first for
 ```
 makeblastdb -help
 
-makeblastdb -dbtype nucl -in ./data_archive/data/16SMicrobial.fasta
+makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
 ```
 Mandatory!!!
 
 ### Step 2: Perform the alignment
 Lets perform a nucleotide-nucleotide BLAST
 ```
-blastn -db ./data_archive/data/16SMicrobial.fasta -query ./data_archive/data/query.fasta -outfmt 6 -out ./data_archive/data/blastn_output.txt
+blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
 ```
 
 ## Bash Script
@@ -292,10 +288,10 @@ Add the following lines to the file using your favorite text editor:
 #!/bin/bash
 
 # Step1 
-makeblastdb -dbtype nucl -in ./data_archive/data/16SMicrobial.fasta
+makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
 
 # Step2
-blastn -db ./data_archive/data/16SMicrobial.fasta -query ./data_archive/data/query.fasta -outfmt 6 -out ./data_archive/data/blastn_output.txt
+blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
 ```
 
 Make the script executable
