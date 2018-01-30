@@ -97,13 +97,16 @@ man grep
 **The real power: `grep` supports regular expressions, a step beyond wildcards!**
 
 Create patterns using - 
+
 Expressions:
+
 	.		A single character
 	[abc] / [0-9]	Range (any one of these characters)
 	\		Backslash, escape char
 	|		The logical "or" operator
 	
 Anchors:
+
 	^		Beginning of line
 	$		End of line
 	\<		Beginning of word
@@ -111,6 +114,7 @@ Anchors:
 	\b		Beginning/End of word
 
 RE Multipliers:
+
 	?	Preceeding item is optional
 	*	Preceeding item matched zero or more times
 	+	Preceeding item matched one or more times
@@ -223,6 +227,7 @@ grep ">" ./data_archive/data/16SMicrobial.fasta | cut -d "|" -f 2,3 | sort | uni
 ```
 
 **Your turn:**
+
 6. Print a unique list of Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: ./data_archive/data/16SMicrobial.fasta
 
 7. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top10 rows. File: ./data_archive/data/16SMicrobial.fasta
