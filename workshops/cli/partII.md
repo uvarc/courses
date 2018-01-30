@@ -23,7 +23,7 @@ drwxrwx---  5 <user>  staff   170B Jan 29 17:34 data		# direcotry with data file
 
 The `grep` utility searches any given input files, selecting lines that match one or more patterns.
 
-Syntax:
+**Syntax**:
 ```
 grep [option(s)] [pattern] [filename]
 ```
@@ -96,9 +96,50 @@ man grep
 
 **The real power: `grep` supports regular expressions, a step beyond wildcards!**
 
-Refer to the cheatsheet. 
+Create patterns using - 
+Expressions:
+	.		A single character
+	[abc] / [0-9]	Range (any one of these characters)
+	\		Backslash, escape char
+	|		The logical "or" operator
+	
+Anchors:
+	^		Beginning of line
+	$		End of line
+	\<		Beginning of word
+	\>		End of word
+	\b		Beginning/End of word
+
+RE Multipliers:
+	?	Preceeding item is optional
+	*	Preceeding item matched zero or more times
+	+	Preceeding item matched one or more times
+	{n}	Preceeding item _n_ times
+	{n,m}	Preceeding item matched between _n_ and _m_ times 
+
 
 Wealth of information on Google! Spend some time understanding how to represent a pattern using regular expression. Practice! Practice! Practice!
+
+
+
+## cut
+
+The `cut` utility cuts portions of file (used for selecting columns)
+
+**Syntax**:
+```
+cut [option(s)] filename
+```
+
+Field separator (default delimiter \t):
+```
+cut -d 
+```
+
+Cut on characters:
+```
+cut -c 
+```
 
 
 ## sort
@@ -150,4 +191,43 @@ uniq -c
 
 Be careful: `uniq` expects duplicate lines to be adjecent. 
 `uniq` is almost always used in combination with `sort`
+
+
+
+## Exercises: 
+
+1. Print lines 2501 to 2750. File: `./data_archive/data/sample_transcripts.gtf`
+```
+head -2750 ./data_archive/data/sample_transcripts.gtf | tail -250
+```
+
+2. Count number of transcripts with read_support of "yes". File: `./data_archive/data/sample_transcripts.gtf`  
+```
+grep "transcript" ./data_archive/data/sample_transcript.gtf | grep "yes" | wc -l
+```
+
+3. Print gene_id and FPKM value of top10 genes with highest FPKM values. File: `./data_archive/data/sample_genes.fpkm_tracking`
+```
+sort -nrk 11 ./data_archive/data/sample_gene.fpkm_tracking | head | cut -f 4,11
+```
+
+4. Count the number of sequences in ./data_archive/data/16SMicrobial.fasta
+```
+grep ">" ./data_archive/data/16SMicrobial.fasta | wc -l
+grep -c ">" ./data_archive/data/16SMicrobial.fasta
+```
+
+5. Print total number of species represented in ./data_archive/data/16SMicrobial.fasta 
+```
+grep ">" ./data_archive/data/16SMicrobial.fasta | cut -d "|" -f 2,3 | sort | uniq | wc -l
+```
+
+**Your turn:**
+6. Print a unique list of Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: ./data_archive/data/16SMicrobial.fasta
+
+7. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top10 rows. File: ./data_archive/data/16SMicrobial.fasta
+
+8. Print the top 5 chromosomes with most transcripts mapped. File: ./data_archive/data/sample_transcripts.gtf
+
+
 
