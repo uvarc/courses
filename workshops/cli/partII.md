@@ -199,39 +199,30 @@ Be careful: `uniq` expects duplicate lines to be adjecent.
 
 ## Exercises: 
 
-1. Print lines 2501 to 2750. File: `./data_archive/data/sample_transcripts.gtf`
-```
->! head -2750 ./data_archive/data/sample_transcripts.gtf | tail -250
-```
+1. Count the number of lines of File: `./data_archive/data/sample_transcripts.gtf`
 
-2. Count number of transcripts with read_support of "yes". File: `./data_archive/data/sample_transcripts.gtf`  
-```
-grep "transcript" ./data_archive/data/sample_transcript.gtf | grep "yes" | wc -l
-```
+2. Print lines 2501 to 2750. File: `./data_archive/data/sample_transcripts.gtf`
 
-3. Print gene_id and FPKM value of top10 genes with highest FPKM values. File: `./data_archive/data/sample_genes.fpkm_tracking`
-```
-sort -nrk 11 ./data_archive/data/sample_gene.fpkm_tracking | head | cut -f 4,11
-```
+3. Count number of transcripts with read_support of "yes". File: `./data_archive/data/sample_transcripts.gtf`  
 
-4. Count the number of sequences in ./data_archive/data/16SMicrobial.fasta
-```
-grep ">" ./data_archive/data/16SMicrobial.fasta | wc -l
-grep -c ">" ./data_archive/data/16SMicrobial.fasta
-```
+4. Print gene_id and FPKM value of top10 genes with highest FPKM values. File: `./data_archive/data/sample_genes.fpkm_tracking`
 
-5. Print total number of species represented in ./data_archive/data/16SMicrobial.fasta 
-```
-grep ">" ./data_archive/data/16SMicrobial.fasta | cut -d "|" -f 2,3 | sort | uniq | wc -l
-```
+5. Count the number of sequences in ./data_archive/data/16SMicrobial.fasta
 
 **Your turn:**
 
-6. Print a unique list of reference sequences belonging to Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: `./data_archive/data/16SMicrobial.fasta`
+6. Print total number of species represented in ./data_archive/data/16SMicrobial.fasta 
 
-7. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top10 rows. File: `./data_archive/data/16SMicrobial.fasta`
+7. Count the number of reads mapped to transcripts on every chromosome. File: `./data_archive/data/sample_transcripts.gtf`
 
-8. Print the top 5 chromosomes with most transcripts mapped. File: `./data_archive/data/sample_transcripts.gtf`
+8. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top 5 rows. File: `./data_archive/data/16SMicrobial.fasta`
 
+9. Identify reference sequences belonging to Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: `./data_archive/data/16SMicrobial.fasta` Save the sequences in a new file `16SMicrobial.subset.fasta`
+
+10. Print email address of Instructors teaching workshops that are part of _Bioinformatics on HPC_ track. The workshop details are in `./data_archive/data/somrc_spring2018_workshops.txt` while the contact information of instructors is in `./data_archive/data/somrc_instructors.txt`
+ 
+
+
+## Command-Line BLAST 
 
 
