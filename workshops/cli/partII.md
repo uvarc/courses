@@ -228,11 +228,11 @@ grep ">" ./data_archive/data/16SMicrobial.fasta | cut -d "|" -f 2,3 | sort | uni
 
 **Your turn:**
 
-6. Print a unique list of Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: ./data_archive/data/16SMicrobial.fasta
+6. Print a unique list of reference sequences belonging to Streptococcus, Staphylococcus, and Lactobacillus genera in the 16S microbial database. File: `./data_archive/data/16SMicrobial.fasta`
 
-7. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top10 rows. File: ./data_archive/data/16SMicrobial.fasta
+7. Calculate a histogram of various Lactobacilli species in the 16S microbial database. Print the top10 rows. File: `./data_archive/data/16SMicrobial.fasta`
 
-8. Print the top 5 chromosomes with most transcripts mapped. File: ./data_archive/data/sample_transcripts.gtf
+8. Print the top 5 chromosomes with most transcripts mapped. File: `./data_archive/data/sample_transcripts.gtf`
 
 
 
