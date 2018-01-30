@@ -121,8 +121,7 @@ RE Multipliers:
 	{n}	Preceeding item _n_ times
 	{n,m}	Preceeding item matched between _n_ and _m_ times 
 
-
-Wealth of information on Google! Spend some time understanding how to represent a pattern using regular expression. Practice! Practice! Practice!
+This is not a comprehensive list. Wealth of information on Google! Spend some time understanding how to represent a pattern using regular expression. Practice! Practice! Practice!
 
 
 
@@ -202,7 +201,7 @@ Be careful: `uniq` expects duplicate lines to be adjecent.
 
 1. Print lines 2501 to 2750. File: `./data_archive/data/sample_transcripts.gtf`
 ```
-head -2750 ./data_archive/data/sample_transcripts.gtf | tail -250
+>! head -2750 ./data_archive/data/sample_transcripts.gtf | tail -250
 ```
 
 2. Count number of transcripts with read_support of "yes". File: `./data_archive/data/sample_transcripts.gtf`  
