@@ -3,13 +3,15 @@
 Before we begin the next session, lets download example data  
 Use `tar` to decompress the downloaded gzipped tarball:
 
-	wget ""
+	wget "https://s3.amazonaws.com/somrc-workshop-data/data.tar.gz"
 	tar [options ???] data_archive.tar.gz
 
 Look at its contents -
+
 	ls data
 
 Notice there are some compressed files. Lets uncompress them all at once using wildcards
+
 	command ???
 
 
@@ -22,6 +24,7 @@ Notice there are some compressed files. Lets uncompress them all at once using w
 The `grep` utility searches any given input files, selecting lines that match one or more patterns.
 
 **Syntax**:
+
 	grep [option(s)] [pattern] [filename]
 
 Lets look at some options on an example file in the ./data directory: `grepExampleFile.txt`
@@ -39,34 +42,44 @@ Lets look at some options on an example file in the ./data directory: `grepExamp
 		Line10: This is the last line of the file.
 
 Search for pattern:
+
 	grep [pattern] filename
 
 Case-insentive search:
+
 	grep -i
 
 Word search: 
+
 	grep -w 
 
 Print additional lines (<num>) after pattern match:
+
 	grep -A<num>
 
 Print additional lines (<num>) before pattern match:
+
 	grep -B<num>
 
 Inverse search:
+
 	grep -v 
 
 Print the line number of match(es):
+
 	grep -n
 
 Print the number (count) of lines that match the pattern:
+
 	grep -c 
 
 Search all lines of `file1` in `file2`:
+
 	grep -f file1.txt file2.txt
 
 Refer `man` page for more ... 
-man grep
+	
+	man grep
 
 **The real power: `grep` supports regular expressions, a step beyond wildcards!**
 
@@ -104,12 +117,15 @@ This is not a comprehensive list. Wealth of information on Google! Spend some ti
 The `cut` utility cuts portions of file (used for selecting columns)
 
 **Syntax**:
+
 	cut [option(s)] filename
 
 Field separator (default delimiter \t):
+
 	cut -d 
 
 Cut on characters:
+
 	cut -c 
 
 
@@ -118,18 +134,23 @@ Cut on characters:
 The `sort` utility sorts the lines of a text file and prints to standard output.
 
 Syntax:
+
 	sort [option(s)] filename
 
 Field separator (default whitespace): 
+
 	sort -t 
 
 Select column (`key` for sorting):
+
 	sort -k 
 
 Numeric sort:
+
 	sort -n
 
 Reverse order:
+
 	sort -r
 
 Combine options to perform meaningful sorting! 
@@ -141,9 +162,11 @@ Combine options to perform meaningful sorting!
 Unique - Filters out repeated lines in file
 
 Syntax:
+
 	uniq [option(s)] filename
 
 Count the number of occurences: 
+
 	uniq -c 
 
 Be careful: `uniq` expects duplicate lines to be adjecent. 
@@ -151,7 +174,7 @@ Be careful: `uniq` expects duplicate lines to be adjecent.
 
 
 
-## Exercises: 
+## Exercise 
 
 1. Count the number of lines of file `./data/sample_transcripts.gtf`
 
@@ -196,12 +219,12 @@ We will do the latter!
 
 **Problem:**
 
-We have a custom database of known microbial 16S rRNA gene sequences, and a query set of 10 unknown sequences. Lets find out what those sequences are using BLAST alignment  
-
+We have a custom database of known microbial 16S rRNA gene sequences and a query set of 10 unknown sequences. Lets find out what those sequences are using BLAST alignment  
 
 ### Installing BLAST
 
 1. Download BLAST+ from the FTP Server:
+
 	wget "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.7.1+-x64-linux.tar.gz"
 
 2. Decompress the tarball
@@ -209,19 +232,24 @@ We have a custom database of known microbial 16S rRNA gene sequences, and a quer
 3. Check out the binaries 
 
 4. Change your $PATH environment
+
 	export PATH="$PATH:/PATH-TO-BIN-FOLDER/"
+
 This tells the system where to find BLAST+ executables
 
 
 ### Step 1: Format reference database
 To perform sequence alignment locally on a custom database, we need to first format the database. 
+
 	makeblastdb -help
 
 	makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
+
 Mandatory!!!
 
 ### Step 2: Perform the alignment
 Lets perform a nucleotide-nucleotide BLAST
+
 	blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
 
 ## Bash Script
@@ -229,6 +257,7 @@ Lets perform a nucleotide-nucleotide BLAST
 Lets write a simple bash script to perform both steps:
 
 Create an empty script file:
+
 	touch myBlastScript.sh
 
 Add the following lines to the file using your favorite text editor:
@@ -245,9 +274,11 @@ Add the following lines to the file using your favorite text editor:
 
 
 Make the script executable
+
 	chmod 755 myBlastScript.sh
 
 Execute the script
+
 	./myBlastScript.sh
 
 
