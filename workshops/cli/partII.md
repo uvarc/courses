@@ -2,15 +2,17 @@
 
 Before we begin the next session, lets download example data  
 Use `tar` to decompress the downloaded gzipped tarball:
-```
-wget ""
-tar [options ???] data_archive.tar.gz
-```
 
-Lets look at its contents:
-```
-$ ls data
-```
+	wget ""
+	tar [options ???] data_archive.tar.gz
+
+Look at its contents -
+	ls data
+
+Notice there are some compressed files. Lets uncompress them all at once using wildcards
+	command ???
+
+
 
 
 ## grep 
@@ -20,75 +22,51 @@ $ ls data
 The `grep` utility searches any given input files, selecting lines that match one or more patterns.
 
 **Syntax**:
-```
-grep [option(s)] [pattern] [filename]
-```
+	grep [option(s)] [pattern] [filename]
 
-Lets look at some options on an example file in the ./data directory: `exampleFile_grep.txt`
+Lets look at some options on an example file in the ./data directory: `grepExampleFile.txt`
 
-```
-$ cat ./data/exampleFile_grep.txt
-Lets have fun with grep!
-THIS LINE IS WRITTEN IN UPPER CASE.
-this line is written in lower case.
-This Line Is Written In Title Case.
-The quick brown fox jumps over the lazy dog!
-May the force be with you! 
-Alvin, Simon and Theodore.
-123 456 789
-This line also contains numbers: 434 924 0311
-Line10: This is the last line of the file.
-```
+	$ cat ./data/grepExampleFile.txt
+		Lets have fun with grep!
+		THIS LINE IS WRITTEN IN UPPER CASE.
+		this line is written in lower case.
+		This Line Is Written In Title Case.
+		The quick brown fox jumps over the lazy dog!
+		May the force be with you! 
+		Alvin, Simon and Theodore.
+		123 456 789
+		This line also contains numbers: 434 924 0311
+		Line10: This is the last line of the file.
 
 Search for pattern:
-```
-grep [pattern] filename
-```
+	grep [pattern] filename
 
 Case-insentive search:
-```
-grep -i
-```
+	grep -i
 
 Word search: 
-```
-grep -w 
-```
+	grep -w 
 
 Print additional lines (<num>) after pattern match:
-```
-grep -A<num>
-```
+	grep -A<num>
 
 Print additional lines (<num>) before pattern match:
-```
-grep -B<num>
-```
+	grep -B<num>
 
 Inverse search:
-```
-grep -v 
-```
+	grep -v 
 
 Print the line number of match(es):
-```
-grep -n
-```
+	grep -n
 
 Print the number (count) of lines that match the pattern:
-```
-grep -c 
-```
+	grep -c 
 
 Search all lines of `file1` in `file2`:
-```
-grep -f file1.txt file2.txt
-```
+	grep -f file1.txt file2.txt
 
 Refer `man` page for more ... 
-```
 man grep
-```
 
 **The real power: `grep` supports regular expressions, a step beyond wildcards!**
 
@@ -126,19 +104,13 @@ This is not a comprehensive list. Wealth of information on Google! Spend some ti
 The `cut` utility cuts portions of file (used for selecting columns)
 
 **Syntax**:
-```
-cut [option(s)] filename
-```
+	cut [option(s)] filename
 
 Field separator (default delimiter \t):
-```
-cut -d 
-```
+	cut -d 
 
 Cut on characters:
-```
-cut -c 
-```
+	cut -c 
 
 
 ## sort
@@ -146,29 +118,19 @@ cut -c
 The `sort` utility sorts the lines of a text file and prints to standard output.
 
 Syntax:
-```
-sort [option(s)] filename
-```
+	sort [option(s)] filename
 
 Field separator (default whitespace): 
-```
-sort -t 
-```
+	sort -t 
 
 Select column (`key` for sorting):
-```
-sort -k 
-```
+	sort -k 
 
 Numeric sort:
-```
-sort -n
-```
+	sort -n
 
 Reverse order:
-```
-sort -r
-```
+	sort -r
 
 Combine options to perform meaningful sorting! 
 
@@ -179,14 +141,10 @@ Combine options to perform meaningful sorting!
 Unique - Filters out repeated lines in file
 
 Syntax:
-```
-uniq [option(s)] filename
-```
+	uniq [option(s)] filename
 
 Count the number of occurences: 
-```
-uniq -c 
-```
+	uniq -c 
 
 Be careful: `uniq` expects duplicate lines to be adjecent. 
 `uniq` is almost always used in combination with `sort`
@@ -215,7 +173,7 @@ Be careful: `uniq` expects duplicate lines to be adjecent.
 
 9. Print email address of Instructors teaching workshops that are part of _Bioinformatics on HPC_ track. The workshop details are in `./data/somrc_spring2018_workshops.txt` while the contact information of instructors is in `./data/somrc_instructors.txt`
  
-10. Typical NGS experimental design will include multiplexing of numerous samples to increase throughput. This step involves attaching a unique barcode (short nucleotide sequence) to the end of DNA fragments and sequencing everything in a massively parallel way. The first step of data analysis is to separate reads into sample-specific files. The file `./data/miseq_raw.fasta` has data from a multiplexed sequencing experiment, with a 8bp barcode attached at the beginning of each read. Find how many reads are sequenced for each sample. 
+10. Typical NGS experimental design involves multiplexing of numerous samples to increase throughput. To achieve this, a unique barcode (short nucleotide sequence)is attached to the end of DNA fragments and everything is sequenced in a massively parallel way. The first step of data analysis is to separate reads into sample-specific files. The file `./data/miseq_raw.fasta` has data from a multiplexed sequencing experiment, with a 12bp barcode attached at the beginning of each read. Find how many reads are sequenced for each sample. 
 
 
 ## Command-Line BLAST 
@@ -244,87 +202,76 @@ We have a custom database of known microbial 16S rRNA gene sequences, and a quer
 ### Installing BLAST
 
 1. Download BLAST+ from the FTP Server:
-```
-wget "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.7.1+-x64-linux.tar.gz"
-```
+	wget "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.7.1+-x64-linux.tar.gz"
 
 2. Decompress the tarball
 
 3. Check out the binaries 
 
 4. Change your $PATH environment
-```
-export PATH="$PATH:/PATH-TO-BIN-FOLDER/"
-```
+	export PATH="$PATH:/PATH-TO-BIN-FOLDER/"
 This tells the system where to find BLAST+ executables
 
 
 ### Step 1: Format reference database
 To perform sequence alignment locally on a custom database, we need to first format the database. 
-```
-makeblastdb -help
+	makeblastdb -help
 
-makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
-```
+	makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
 Mandatory!!!
 
 ### Step 2: Perform the alignment
 Lets perform a nucleotide-nucleotide BLAST
-```
-blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
-```
+	blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
 
 ## Bash Script
 
 Lets write a simple bash script to perform both steps:
 
 Create an empty script file:
-```
-touch myBlastScript.sh
-```
+	touch myBlastScript.sh
 
 Add the following lines to the file using your favorite text editor:
-```
-#!/bin/bash
 
-# Step1 
-makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
+		
+	#!/bin/bash
 
-# Step2
-blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
-```
+	# Step1 
+	makeblastdb -dbtype nucl -in ./data/16SMicrobial.fasta
+
+	# Step2
+	blastn -db ./data/16SMicrobial.fasta -query ./data/query.fasta -outfmt 6 -out ./data/blastn_output.txt
+	
+
 
 Make the script executable
-```
-chmod 755 myBlastScript.sh
-``` 
+	chmod 755 myBlastScript.sh
 
 Execute the script
-```
-./myBlastScript.sh
-```
+	./myBlastScript.sh
+
 
 Let's make the script more flexible. 
 Accept the reference, query and output files from command line
 
-```
-#!/bin/bash
-
-REF=$1
-QUERY=$2
-OUT=$3
-
-# Step1 
-makeblastdb -dbtype nucl -in ${REF}
-
-# Step2
-blastn -db ${REF} -query ${QUERY} -outfmt 6 -out ${OUT}
-
-echo "Done!"
-```
+	
+	#!/bin/bash
+	
+	REF=$1
+	QUERY=$2
+	OUT=$3
+	
+	# Step1 
+	makeblastdb -dbtype nucl -in ${REF}
+	
+	# Step2
+	blastn -db ${REF} -query ${QUERY} -outfmt 6 -out ${OUT}
+	
+	echo "Done!"
+	
 
 To execute the above script:
-```
-./myBlastScript.sh <REF> <QUERY> <OUT>
-```
 
+	./myBlastScript.sh <REF> <QUERY> <OUT>
+
+**Yay! You are now ready to search "any" query sequence(s) against "any" custom reference database!!!**
