@@ -1,16 +1,18 @@
 # Additional Unix Commands
 
 Before we begin the next session, lets download example data  
-Use `tar` to decompress the downloaded gzipped tarball:
 
 	wget "https://s3.amazonaws.com/somrc-workshop-data/data.tar.gz"
+
+Use `tar` to decompress the downloaded gzipped tarball:
+
 	tar [options ???] data_archive.tar.gz
 
 Look at its contents -
 
 	ls data
 
-Notice there are some compressed files. Lets uncompress them all at once using wildcards
+Notice there are some compressed files. Lets uncompress them all at once using wildcards -
 
 	command ???
 
@@ -53,11 +55,11 @@ Word search:
 
 	grep -w 
 
-Print additional lines (<num>) after pattern match:
+Print additional lines (num) after pattern match:
 
 	grep -A<num>
 
-Print additional lines (<num>) before pattern match:
+Print additional lines (num) before pattern match:
 
 	grep -B<num>
 
@@ -69,7 +71,7 @@ Print the line number of match(es):
 
 	grep -n
 
-Print the number (count) of lines that match the pattern:
+Print the number(/count) of lines that match the pattern:
 
 	grep -c 
 
@@ -88,7 +90,8 @@ Create patterns using -
 Expressions:
 
 	.		A single character
-	[abc] / [0-9]	Range (any one of these characters)
+	[abc]	Range (any one of these characters)
+	[0-9]	Range (any one of these numbers)
 	\		Backslash, escape char
 	|		The logical "or" operator
 	
