@@ -109,3 +109,7 @@ hierarchy of data: fields and their values, and dictionaries of multiple values,
 ![Graph DB 2](https://s3.amazonaws.com/uvasom-resources/courses/graph-nodes.png)
 
 ![Graph DB 1](https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png)
+
+## Other Resources
+
+[![Martin Fowler - NoSQL - YouTube](https://img.youtube.com/vi/qI_g07C_Q5I/0.jpg)](https://www.youtube.com/watch?v=qI_g07C_Q5I)
