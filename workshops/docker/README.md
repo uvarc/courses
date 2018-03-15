@@ -173,6 +173,55 @@ CMD ["python", "app.py"]
 docker build -t mycontainer .
 ```
 
+## Example - Build your own Cowsay
+
+1. Create a new directory and hop into it.
+2. Create a file named `docker.cow` and in it put this:
+
+```
+##
+## Docker Cow
+##
+$the_cow = <<EOC;
+    $thoughts
+     $thoughts
+      $thoughts
+EOC
+$the_cow .= <<'EOC';
+                    ##         .
+              ## ## ##        ==
+           ## ## ## ## ##    ===
+       /"""""""""""""""""\___/ ===
+      {                       /  ===-
+       \______ O           __/
+         \    \         __/
+          \____\_______/
+
+EOC
+```
+
+3. Create another file named `Dockerfile` and enter something like this:
+```
+FROM ubuntu:14.04
+
+# install cowsay, and move the "default.cow" out of the way so we can overwrite it with "docker.cow"
+RUN apt-get update && apt-get install -y cowsay --no-install-recommends && rm -rf /var/lib/apt/lists/* \
+    && mv /usr/share/cowsay/cows/default.cow /usr/share/cowsay/cows/orig-default.cow
+
+# "cowsay" installs to /usr/games
+ENV PATH $PATH:/usr/games
+
+COPY docker.cow /usr/share/cowsay/cows/
+RUN ln -sv /usr/share/cowsay/cows/docker.cow /usr/share/cowsay/cows/default.cow
+
+CMD ["cowsay"]
+```
+4. Build the container with a name
+5. Run the container with your command and a parameter:
+
+    docker run <image-name> cowsay Hello there!
+
+
 ## Reference
 
 ```bash
