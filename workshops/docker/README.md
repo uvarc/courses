@@ -219,7 +219,7 @@ CMD ["cowsay"]
 4. Build the container with a name
 5. Run the container with your command and a parameter:
 
-    docker run <image-name> cowsay Hello there!
+```docker run <image-name> cowsay Hello there!```
 
 
 ## Reference
