@@ -21,7 +21,7 @@ Many users have at least heard of relational databases like:
 * MySQL / MariaDB
 * PostgreSQL
 * Microsoft SQL Server
-* Oracle
+* Oracle / SAP
 
 Relational databases operate on the concepts of tables, relations, indexes, SQL, CRUD operations, and joins.
 
