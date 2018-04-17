@@ -37,7 +37,7 @@ VSEARCH (stands for Vectorized Search) is a toolkit for nucleotide sequence anal
 Homepage: [https://github.com/torognes/vsearch](https://github.com/torognes/vsearch)
 
 - **RDP Classifier**\
-RDP classifier is a naive Bayesian classifier that provides taxonomic placements based on rRNA sequences.
+RDP classifier is a naive Bayesian classifier that provides taxonomic placements based on rRNA sequences.\
 Homepage: [https://github.com/rdpstaff/classifier](https://github.com/rdpstaff/classifier)\
 WebPortal: [https://rdp.cme.msu.edu/classifier/classifier.jsp](https://rdp.cme.msu.edu/classifier/classifier.jsp)
 
@@ -77,7 +77,6 @@ Examine its contents:
 <details> 
   <summary>Output</summary>
 <pre><code>
-	-rwxr-xr-x 2 hp7d users  72K Apr 13 10:15 sample_data.txt
 	drwxr-xr-x 4 hp7d users 4.0K Apr 16 10:59 scripts
 	drwxr-xr-x 4 hp7d users 4.0K Apr 16 10:59 refdb
 	drwxr-xr-x 2 hp7d users  72K Apr 13 10:15 raw_data
@@ -90,7 +89,6 @@ Examine its contents:
 	drwxr-xr-x 2 hp7d users  72K Apr 13 10:15 output
 </code></pre>
 <br/>
-`./sample_data.txt`:	tab-delimited metadata\
 `./scripts/`:			utility scripts\
 `./refdb/`:				SILVA LTP v123 sequence database\
 `./raw_data/`:			paired-end raw reads for each sample\
@@ -237,9 +235,7 @@ Tools used: [PyNAST](http://biocore.github.io/pynast/), [FastTree](http://www.mi
 
 ## Copy files to your laptop 
 
-For downstream visualizations and statistical analysis, we will now work on our personal computer. For consistency, copy the output files that have been provided.\     
+For downstream visualizations and statistical analysis, we will now work on our personal computer. For consistency, copy the output files that have been provided.
 On your laptop - 
 
 	scp -r <mst3k>@rivanna.hpc.virginia.edu:/scratch/<mst3k>/16S-workshop/output ./
-
-### Useful Links: 
