@@ -157,9 +157,9 @@ Let's begin -
 
 **Pool sequences from all samples**\
 We need to pool *merged_qc_relabel* sequences of all samples in our dataset into one FASTA file. The preprocessing steps have been performed for all 100 samples and sequenes pooled into one file.\
-Copy the file 
+Unzip the fasta file -  
 
-	cp /scratch/hp7d/relman2017_samples.fasta ./
+	gunzip relman2017_samples.fasta.gz
 
 **Dereplicate sequences**\
 Next, de-replicate the sequences to reduce subsequent computation
