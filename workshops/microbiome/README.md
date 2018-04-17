@@ -120,7 +120,7 @@ Notice the quality of tails for each read, positions 225-250.
 Next, merge the pairs - 
 
 	cd ${WORKDIR}/mergepairs/
-	vsearch --fastq_mergepairs ../raw_data/SRR5972053_1.fastq.gz --reverse ../raw_data/SRR5972053_2.fastq.gz --fastqout SRR5972053_merged.fastq --threads 20
+	vsearch --fastq_mergepairs ${WORKDIR}/raw_data/SRR5972053_1.fastq.gz --reverse ${WORKDIR}/raw_data/SRR5972053_2.fastq.gz --fastqout SRR5972053_merged.fastq --threads 20
 
 Examine the quality of merged reads - 
 
@@ -133,7 +133,7 @@ There are some false positives from the merging step, some reads after merging a
 In this step, we shall remove low quality amplicons. We will filter reads based on expected error rates, filter longer than expected amplicons, and convert the reads to fasta format.   
 
 	cd ${WORKDIR}/qc/
-	vsearch --fastq_filter ../mergepairs/SRR5972053_merged.fastq --fastq_maxee 1 --fastq_maxlen 250 --fastaout SRR5972053_merged_qc.fasta
+	vsearch --fastq_filter ${WORKDIR}/mergepairs/SRR5972053_merged.fastq --fastq_maxee 1 --fastq_maxlen 250 --fastaout SRR5972053_merged_qc.fasta
 
 
 **_Relabel_**\
@@ -141,7 +141,7 @@ Next, we need to relabel the sequence descriptions to match: ">SampleName_Sequen
 This is REQUIRED for the downstream clustering steps! 
 
 	cd ${WORKDIR}/relabel/
-	python ${WORKDIR}/scripts/relabelFasta_file.py -in ../qc/SRR5972053_merged_qc.fasta -out SRR5972053_merged_qc_relabel.fasta
+	python ${WORKDIR}/scripts/relabelFasta_file.py -in ${WORKDIR}/qc/SRR5972053_merged_qc.fasta -out SRR5972053_merged_qc_relabel.fasta
 
 #### All of the above steps need to be performed for every sample. 
 
