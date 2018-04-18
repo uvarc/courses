@@ -52,8 +52,10 @@ Hop on to a compute node using `ijob` -
 
 	ijob -A somrc-hpc-workshop -c 20 --mem=20gb -p standard
 
-Load required modules
+Load required modules - 
 
+	module load anaconda2
+	module load gcc/7.1.0
 	module load vsearch
 	module load rdp-classifier
 
@@ -69,7 +71,7 @@ For your convenience, create a work-dir variable
 
 	export WORKDIR="/scratch/<mst3k>/16S-workshop/"
 
-Examine its contents:
+Examine its contents -
 
 	cd $WORKDIR
 	ls -la

@@ -1,0 +1,309 @@
+---
+title: "16S-workshop"
+author: "Hardik I Parikh"
+date: "4/18/2018"
+output: 
+  html_document:
+    code_folding: show
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      number_sections: true
+---
+```{r setup, include=FALSE}
+#### Setup environment
+
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(reshape2)
+library(phyloseq)
+library(vegan)
+library(ape)
+library(ggpubr)
+library(RColorBrewer)
+theme_set(theme_bw())
+set.seed(12345)
+```
+
+
+This markdown outlines instructions for visualization and analysis of OTU-clustered amplicon sequencing data, primarily using the _phyloseq_ package.  
+
+### Prerequisites
+
+- R basics
+- Data manipulation with dplyr and `%>%`
+- Data visualization with ggplot2
+
+
+#### R packages 
+
+**_CRAN packages_**
+
+- [tidyverse (readr, dplyr, ggplot2)](https://www.tidyverse.org/packages/)
+- [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+- [reshape2](https://cran.r-project.org/web/packages/reshape2/reshape2.pdf)
+- [vegan](https://cran.r-project.org/web/packages/vegan/vignettes/intro-vegan.pdf)
+- [ape](https://cran.r-project.org/web/packages/ape/ape.pdf)
+- [ggpubr](http://www.sthda.com/english/rpkgs/ggpubr/)
+- [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/RColorBrewer.pdf)
+
+**_Bioconductor packages_**
+
+- [phyloseq](https://joey711.github.io/phyloseq/)
+- [DESeq2](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
+
+
+#### Required Data Files
+We will use the output files generated during the sequence processing steps.
+
+- OTU table (abundance table) : `relman2017_samples.otu_table.txt`
+- Taxonomy table : `relman2017_samples.tax_table.txt`
+- Sample metadata : `relman2017_samples.sample_data.txt`
+- OTU phylogenetic tree : `relman2017_samples.rep_set.tre`
+
+
+### Load data
+Let's read in the data files using `read_tsv()` function of **readr** package 
+```{r}
+dataDir = "~/Documents/16S-workshop/output/"
+# import OTU table
+otu <- read_tsv(paste(dataDir, "relman2017_samples.otu_table.txt", sep="/"))
+otu
+# import Taxonomy table
+taxonomy <- read_tsv(paste(dataDir, "relman2017_samples.tax_table.txt", sep="/"))
+taxonomy
+# import Sample metadata
+metadata <- read_tsv(paste(dataDir, "relman2017_samples.sample_data.txt", sep="/"))
+metadata
+# import phylogenetic tree
+phytree <- read.tree(paste(dataDir, "relman2017_samples.rep_set.tre", sep="/"))
+phytree
+```
+
+
+### Create phyloseq object
+Read More: [Importing data into phyloseq](https://joey711.github.io/phyloseq/import-data.html)
+```{r}
+
+# create OTU table
+otu <- otu %>%
+  as.data.frame() %>%
+  column_to_rownames("OTUId")
+OTU <- otu_table(otu, taxa_are_rows = TRUE)  
+
+# create TAX table
+taxonomy <- taxonomy %>%
+  as.data.frame() %>%
+  column_to_rownames("X1") %>%
+  as.matrix()
+TAX <- tax_table(taxonomy)
+
+# create sample metadata
+metadata <- metadata %>%
+  as.data.frame() %>%
+  mutate_if(sapply(metadata, is.character), as.factor) %>%
+  column_to_rownames("sample") 
+SDATA <- sample_data(metadata)
+
+# create the phyloseq object
+physeq <- phyloseq(OTU, TAX, SDATA, phytree)
+```
+
+
+### Data pruning
+Read More: [(Pre)Processing Data](https://joey711.github.io/phyloseq/preprocess.html)  
+_Phyloseq_ package provides a plethora of functions for filtering, subsetting and merging abundance data. It is beyond the scope of this workshop to discuss their usage in detail and downstream implications of chosen threshold. I strongly recommend referring the _phyloseq_ vignette for answers!  
+For this tutorial, we will remove taxa that have read count less than 100 in at least 10% of samples. This protects againsts OTUs with small mean and trivially large C.V.  
+*Do not use these measures to filter your dataset!*
+```{r}
+# For this tutorial, we will only look into high-abundance/high-prevelance OTUs
+physeq.f <- filter_taxa(physeq, 
+                        function(x) sum(x >= 100) > (0.01*length(x)), 
+                        prune = TRUE)
+```
+
+
+### Stacked Bars
+Read More: [Phyloseq bar plots](https://joey711.github.io/phyloseq/plot_bar-examples.html)  
+
+Let's plot phylum-level abundances using the `plot_bar()` function of _phyloseq_
+```{r}
+
+plot_bar(physeq.f, "phylum", fill="phylum", facet_grid = term_vs_preterm_delivery~race) + 
+  geom_bar(aes(color=phylum, fill=phylum), stat="identity", position = "stack") 
+
+# Go over the phyloseq tutorials to explore additional features
+```
+
+
+Next, we will plot stacked bars by clustering samples on their bray-curtis dissimilarities. 
+
+```{r}
+
+# transform counts to relative abundance
+physeq.f.ra <- transform_sample_counts(physeq.f, function(x) x*100/sum(x))
+
+# agglomerate counts at genus-level
+physeq.f.ra.genus <- tax_glom(physeq.f.ra, "genus")
+
+# next get the otu_table
+propData <- as.data.frame(t(otu_table(physeq.f.ra.genus)))
+
+# get melted dataframe
+plotDF <- propData %>%
+  rownames_to_column(var="sample") %>%
+  melt() %>%
+  magrittr::set_names(c("sample", "taxa", "relab"))
+  
+# add taxonomy to plotting DF
+taxonomy.2 <- taxonomy %>%
+  as.data.frame() %>%
+  rownames_to_column(var="taxa")
+plotDF <- left_join(plotDF, taxonomy.2, by="taxa") %>%
+  select(sample, taxa, relab, genus)
+
+# aggregate all unclassified taxa levels
+tot_unc <- plotDF %>%
+  group_by(sample) %>%
+  filter(grepl("unclassified", genus)) %>%
+  summarise(relab=sum(relab)) %>%
+  mutate(taxa = "unclassified", genus = "unclassified") 
+
+# add the unclassified aggregated rel ab to plotting data frame
+plotDF <- plotDF %>%
+  filter(!grepl("unclassified", genus)) %>%
+  rbind(tot_unc)
+
+# add metadata to plotting DF
+metadata.2 <- metadata %>%
+  rownames_to_column(var="sample")
+plotDF <- left_join(plotDF, metadata.2, by="sample")
+
+# lets plot stacked bars using ggplot2
+mycolors <- rev(colorRampPalette(brewer.pal(10, "Paired"))(length(unique(plotDF$genus))))
+ggplot(plotDF, aes(sample, relab, fill=genus)) + 
+  geom_bar(stat="identity", position = "stack") + 
+  scale_fill_manual(values = mycolors) + 
+  theme(legend.position = "bottom")
+
+# sort samples on bray-curtis distances
+bcdist <- vegdist(propData, method="bray")
+hclustBC <- hclust(bcdist, method="ward.D2")
+# set sample factor levels 
+plotDF$sample <- factor(plotDF$sample, levels = hclustBC$labels[c(hclustBC$order)])
+
+# plot again
+ggplot(plotDF, aes(sample, relab, fill=genus, group=relab)) + 
+  geom_bar(stat="identity", position = "stack") + 
+  scale_fill_manual(values = mycolors) + 
+  theme(legend.position = "bottom")
+
+```
+
+
+### Alpha Diversity
+Read More: [Phyloseq Alpha diversity](https://joey711.github.io/phyloseq/plot_richness-examples.html)  
+
+Alpha diversity refers to community _richness_, i.e. how many different _types_ of organisms are present, and _evenness_, i.e. how even/uneven the distribution of species abundance is, in a sample. Alpha-diversity analyses are useful for examining patterns of dominance, rarity and community complexity.
+
+Plot alpha diversity using the `plot_richness()` function
+```{r, fig.width=9, fig.height=4.5}
+# alpha diversity is measured on count data in phyloseq
+plot_richness(physeq.f,
+              x = "race",
+              color = "term_vs_preterm_delivery",
+              measures = c("Observed", "Shannon", "InvSimpson")) + 
+  geom_boxplot()
+```
+
+In this section, we will calculate the same measures of alpha diversity using the *vegan* package, followed by comparing means within groups using *ggpubr* package
+
+```{r, fig.width=9, fig.height=4.5}
+# calculating alpha diversity on proportional data 
+# R package: vegan
+
+propData <- as.data.frame(t(otu_table(physeq.f.ra)))
+
+# calculate shannon index, manipulate data frame for plotting
+adivDF.shannon <- as.data.frame(diversity(propData, index = "shannon")) %>%
+  rownames_to_column(var="sample") %>%
+  magrittr::set_names(c("sample", "value")) %>%
+  mutate(index = "shannon")
+
+# calculate invsim index, manipulate data frame for plotting
+adivDF.invsim <- as.data.frame(diversity(propData, index = "invsim")) %>%
+  rownames_to_column(var="sample") %>%
+  magrittr::set_names(c("sample", "value")) %>%
+  mutate(index = "invsim")
+
+# create plotting dataframe
+adivDF <- rbind(adivDF.shannon, adivDF.invsim) %>%
+  left_join(metadata.2, by="sample")
+
+# plot using ggpubr
+ggboxplot(adivDF, "term_vs_preterm_delivery", "value", 
+          color = "term_vs_preterm_delivery", palette = "jco",
+          add = "jitter", outlier.shape=NA) + 
+  facet_grid(~index+race) + 
+  stat_compare_means(label = "p.format") 
+```
+
+
+### Beta Diversity, Ordinations
+
+Read More: [Ordination Plots](https://joey711.github.io/phyloseq/plot_ordination-examples.html)  
+
+Beta diversity refers to between sample diversity, summerize how similar/dissimilar two samples are. The taxa abundances in each sample gets compared to every other sample in the dataset, generating a distance matrix, which can be visualized using Principal Coordinate Analysis.
+
+*Bray-Curtis distances* 
+```{r}
+# first calculate bray-curtis distance
+physeq.f.distBC <- distance(physeq.f, method="bray")
+physeq.f.distBC.ord <- ordinate(physeq.f, method = "PCoA", distance = physeq.f.distBC)
+
+# color by metadata
+plot_ordination(physeq.f, physeq.f.distBC.ord, color="race") + geom_point() 
+plot_ordination(physeq.f, physeq.f.distBC.ord, color="term_vs_preterm_delivery") + geom_point() 
+```
+
+*UniFrac distances*
+```{r}
+# first calculate unifrac distance
+physeq.f.distUF <- distance(physeq.f, method="unifrac")
+physeq.f.distUF.ord <- ordinate(physeq.f, method = "PCoA", distance = physeq.f.distUF)
+
+# color by metadata
+plot_ordination(physeq.f, physeq.f.distUF.ord, color="race") + geom_point() 
+plot_ordination(physeq.f, physeq.f.distUF.ord, color="term_vs_preterm_delivery") + geom_point() 
+```
+
+
+### DESeq2 
+
+_**Which taxa are important?**_  
+The ordination plots reveal microbiome levels shifts within groups-of-interest. A univariate analysis of individual taxa abudances can be performed using DESeq2, to measure _significant fold changes_.  
+
+`phyloseq_to_deseq2()` function provides a convenient function to convert `phyloseq` object to `DESeq2DataSet` class.
+
+```{r}
+library(DESeq2)
+
+# convert to DESeq2's data class
+diagdds <- phyloseq_to_deseq2(physeq.f, ~ term_vs_preterm_delivery)
+
+# perform the testing
+diagdds <- DESeq(diagdds, test="Wald", fitType="parametric")
+
+# look at the results 
+res <- results(diagdds, cooksCutoff = FALSE)
+sigtab <- res[which(res$padj < 0.01), ]
+sigtab <- cbind(as(sigtab, "data.frame"), as(tax_table(physeq.f)[rownames(sigtab), ], "matrix"))
+head(sigtab, n = 20)
+```
+
+Popular biomarker discovery tools, utilizing multivariate analysis:  
+- [LEfSe](https://bitbucket.org/biobakery/biobakery/wiki/lefse)  
+- [Indicator Analysis](https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf)
+
+
