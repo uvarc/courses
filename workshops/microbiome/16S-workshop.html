@@ -282,11 +282,52 @@ div.tocify {
 <li>OTU phylogenetic tree : <code>relman2017_samples.rep_set.tre</code></li>
 </ul>
 </div>
+<div id="load-packages" class="section level4">
+<h4>Load packages</h4>
+<pre class="r"><code>#### Setup environment
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(tibble)</code></pre>
+<pre><code>## Warning: package 'tibble' was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(magrittr)
+library(reshape2)</code></pre>
+<pre><code>## Warning: package 'reshape2' was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(phyloseq)
+library(vegan)</code></pre>
+<pre><code>## Warning: package 'vegan' was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: permute</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## This is vegan 2.4-6</code></pre>
+<pre class="r"><code>library(ape)</code></pre>
+<pre><code>## Warning: package 'ape' was built under R version 3.4.4</code></pre>
+<pre class="r"><code>library(ggpubr)</code></pre>
+<pre><code>## 
+## Attaching package: 'ggpubr'</code></pre>
+<pre><code>## The following object is masked from 'package:ape':
+## 
+##     rotate</code></pre>
+<pre class="r"><code>library(RColorBrewer)
+theme_set(theme_bw())
+set.seed(12345)</code></pre>
+</div>
 </div>
 <div id="load-data" class="section level3">
 <h3>Load data</h3>
 <p>Let’s read in the data files using <code>read_tsv()</code> function of <strong>readr</strong> package</p>
-<pre class="r"><code>dataDir = &quot;~/Documents/16S-workshop/output/&quot;
+<pre class="r"><code># create a dataDir variable
+dataDir = &quot;~/Documents/16S-workshop/output/&quot;
+# change this to the directory on your laptop where the files are located
+
 # import OTU table
 otu &lt;- read_tsv(paste(dataDir, &quot;relman2017_samples.otu_table.txt&quot;, sep=&quot;/&quot;))</code></pre>
 <pre><code>## Parsed with column specification:
@@ -432,18 +473,30 @@ metadata &lt;- metadata %&gt;%
 SDATA &lt;- sample_data(metadata)
 
 # create the phyloseq object
-physeq &lt;- phyloseq(OTU, TAX, SDATA, phytree)</code></pre>
+physeq &lt;- phyloseq(OTU, TAX, SDATA, phytree)
+physeq</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 1150 taxa and 100 samples ]
+## sample_data() Sample Data:       [ 100 samples by 5 sample variables ]
+## tax_table()   Taxonomy Table:    [ 1150 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 1150 tips and 1148 internal nodes ]</code></pre>
 </div>
 <div id="data-pruning" class="section level3">
 <h3>Data pruning</h3>
 <p>Read More: <a href="https://joey711.github.io/phyloseq/preprocess.html">(Pre)Processing Data</a><br />
 <em>Phyloseq</em> package provides a plethora of functions for filtering, subsetting and merging abundance data. It is beyond the scope of this workshop to discuss their usage in detail and downstream implications of chosen threshold. I strongly recommend referring the <em>phyloseq</em> vignette for answers!<br />
 For this tutorial, we will remove taxa that have read count less than 100 in at least 10% of samples. This protects againsts OTUs with small mean and trivially large C.V.<br />
-<em>Do not use these measures to filter your dataset!</em></p>
+<em>Do not use these measures for your own project data!</em></p>
 <pre class="r"><code># For this tutorial, we will only look into high-abundance/high-prevelance OTUs
 physeq.f &lt;- filter_taxa(physeq, 
                         function(x) sum(x &gt;= 100) &gt; (0.01*length(x)), 
-                        prune = TRUE)</code></pre>
+                        prune = TRUE)
+physeq.f</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 172 taxa and 100 samples ]
+## sample_data() Sample Data:       [ 100 samples by 5 sample variables ]
+## tax_table()   Taxonomy Table:    [ 172 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 172 tips and 171 internal nodes ]</code></pre>
 </div>
 <div id="stacked-bars" class="section level3">
 <h3>Stacked Bars</h3>
@@ -467,7 +520,7 @@ propData &lt;- as.data.frame(t(otu_table(physeq.f.ra.genus)))
 plotDF &lt;- propData %&gt;%
   rownames_to_column(var=&quot;sample&quot;) %&gt;%
   melt() %&gt;%
-  magrittr::set_names(c(&quot;sample&quot;, &quot;taxa&quot;, &quot;relab&quot;))</code></pre>
+  set_names(c(&quot;sample&quot;, &quot;taxa&quot;, &quot;relab&quot;))</code></pre>
 <pre><code>## Using sample as id variables</code></pre>
 <pre class="r"><code># add taxonomy to plotting DF
 taxonomy.2 &lt;- taxonomy %&gt;%
@@ -535,13 +588,13 @@ propData &lt;- as.data.frame(t(otu_table(physeq.f.ra)))
 # calculate shannon index, manipulate data frame for plotting
 adivDF.shannon &lt;- as.data.frame(diversity(propData, index = &quot;shannon&quot;)) %&gt;%
   rownames_to_column(var=&quot;sample&quot;) %&gt;%
-  magrittr::set_names(c(&quot;sample&quot;, &quot;value&quot;)) %&gt;%
+  set_names(c(&quot;sample&quot;, &quot;value&quot;)) %&gt;%
   mutate(index = &quot;shannon&quot;)
 
 # calculate invsim index, manipulate data frame for plotting
 adivDF.invsim &lt;- as.data.frame(diversity(propData, index = &quot;invsim&quot;)) %&gt;%
   rownames_to_column(var=&quot;sample&quot;) %&gt;%
-  magrittr::set_names(c(&quot;sample&quot;, &quot;value&quot;)) %&gt;%
+  set_names(c(&quot;sample&quot;, &quot;value&quot;)) %&gt;%
   mutate(index = &quot;invsim&quot;)
 
 # create plotting dataframe
@@ -618,9 +671,6 @@ The ordination plots reveal microbiome levels shifts within groups-of-interest. 
 <pre><code>## The following objects are masked from 'package:dplyr':
 ## 
 ##     first, rename</code></pre>
-<pre><code>## The following object is masked from 'package:tidyr':
-## 
-##     expand</code></pre>
 <pre><code>## The following object is masked from 'package:base':
 ## 
 ##     expand.grid</code></pre>
@@ -633,9 +683,6 @@ The ordination plots reveal microbiome levels shifts within groups-of-interest. 
 <pre><code>## The following objects are masked from 'package:dplyr':
 ## 
 ##     collapse, desc, slice</code></pre>
-<pre><code>## The following object is masked from 'package:purrr':
-## 
-##     reduce</code></pre>
 <pre><code>## Loading required package: GenomicRanges</code></pre>
 <pre><code>## Warning: package 'GenomicRanges' was built under R version 3.4.3</code></pre>
 <pre><code>## Loading required package: GenomeInfoDb</code></pre>
@@ -694,92 +741,36 @@ diagdds &lt;- DESeq(diagdds, test=&quot;Wald&quot;, fitType=&quot;parametric&quo
 res &lt;- results(diagdds, cooksCutoff = FALSE)
 sigtab &lt;- res[which(res$padj &lt; 0.01), ]
 sigtab &lt;- cbind(as(sigtab, &quot;data.frame&quot;), as(tax_table(physeq.f)[rownames(sigtab), ], &quot;matrix&quot;))
-head(sigtab, n = 20)</code></pre>
-<pre><code>##              baseMean log2FoldChange     lfcSE       stat       pvalue
-## OTU_111    1767.51244     -11.982176 1.5800953  -7.583198 3.371385e-14
-## OTU_303    1178.45592     -10.742514 1.5008538  -7.157602 8.210050e-13
-## OTU_5    258736.22001      -4.154370 0.9431855  -4.404616 1.059716e-05
-## OTU_302     138.38654      -6.686948 1.2958589  -5.160244 2.466285e-07
-## OTU_541     196.99919     -15.118544 1.2568358 -12.029053 2.500124e-33
-## OTU_91     1354.41348     -14.692651 1.3425713 -10.943665 7.125963e-28
-## OTU_1175    125.14917       6.460472 0.9576249   6.746349 1.516112e-11
-## OTU_48     1026.28441      19.719049 2.9039429   6.790440 1.117924e-11
-## OTU_468     223.81014      -8.622400 1.4992114  -5.751291 8.856463e-09
-## OTU_104    1365.99562     -10.256643 0.9675319 -10.600832 2.953403e-26
-## OTU_38       78.50563       3.883498 1.2676009   3.063660 2.186474e-03
-## OTU_45      799.85893      -2.843298 0.8708630  -3.264920 1.094950e-03
-## OTU_313     172.22250     -12.221676 1.3187338  -9.267735 1.901399e-20
-## OTU_338      79.38121      -4.557586 1.1232006  -4.057677 4.956318e-05
-## OTU_190    1357.30018      -5.415318 0.9902232  -5.468786 4.531297e-08
-## OTU_58     1831.12441      -3.460724 0.9652698  -3.585240 3.367685e-04
-## OTU_619     160.35637     -13.037735 1.4797737  -8.810628 1.244468e-18
-## OTU_83       62.37140      -5.395945 1.3548102  -3.982805 6.810651e-05
-## OTU_941     186.98325     -12.453022 1.1432983 -10.892189 1.255844e-27
-## OTU_131     187.67197      -9.537642 1.0042962  -9.496842 2.163520e-21
-##                  padj   domain                phylum                 class
-## OTU_111  4.015014e-13 Bacteria            Firmicutes               Bacilli
-## OTU_303  8.273204e-12 Bacteria            Firmicutes               Bacilli
-## OTU_5    5.845259e-05 Bacteria            Firmicutes               Bacilli
-## OTU_302  1.615417e-06 Bacteria            Firmicutes               Bacilli
-## OTU_541  1.091721e-31 Bacteria unclassified_Bacteria unclassified_Bacteria
-## OTU_91   2.333753e-26 Bacteria            Firmicutes               Bacilli
-## OTU_1175 1.324071e-10 Bacteria            Firmicutes               Bacilli
-## OTU_48   1.046058e-10 Bacteria            Firmicutes               Bacilli
-## OTU_468  6.824686e-08 Bacteria            Firmicutes            Clostridia
-## OTU_104  6.448262e-25 Bacteria        Actinobacteria        Actinobacteria
-## OTU_38   8.183658e-03 Bacteria        Actinobacteria        Actinobacteria
-## OTU_45   4.218779e-03 Bacteria        Actinobacteria        Actinobacteria
-## OTU_313  2.767592e-19 Bacteria        Actinobacteria        Actinobacteria
-## OTU_338  2.404732e-04 Bacteria        Actinobacteria        Actinobacteria
-## OTU_190  3.297777e-07 Bacteria        Actinobacteria        Actinobacteria
-## OTU_58   1.423119e-03 Bacteria        Actinobacteria        Actinobacteria
-## OTU_619  1.630253e-17 Bacteria        Actinobacteria        Actinobacteria
-## OTU_83   3.076535e-04 Bacteria        Actinobacteria        Actinobacteria
-## OTU_941  3.290310e-26 Bacteria        Actinobacteria        Actinobacteria
-## OTU_131  3.542764e-20 Bacteria        Actinobacteria        Actinobacteria
-##                          order                          family
-## OTU_111        Lactobacillales                Lactobacillaceae
-## OTU_303        Lactobacillales                Lactobacillaceae
-## OTU_5          Lactobacillales                Lactobacillaceae
-## OTU_302        Lactobacillales                Lactobacillaceae
-## OTU_541  unclassified_Bacteria           unclassified_Bacteria
-## OTU_91         Lactobacillales    unclassified_Lactobacillales
-## OTU_1175       Lactobacillales                Lactobacillaceae
-## OTU_48         Lactobacillales                Lactobacillaceae
-## OTU_468          Clostridiales Clostridiales_Incertae Sedis XI
-## OTU_104      Bifidobacteriales              Bifidobacteriaceae
-## OTU_38         Actinomycetales                  Micrococcaceae
-## OTU_45         Actinomycetales    unclassified_Actinomycetales
-## OTU_313        Actinomycetales              Corynebacteriaceae
-## OTU_338        Actinomycetales              Corynebacteriaceae
-## OTU_190        Actinomycetales              Corynebacteriaceae
-## OTU_58         Actinomycetales              Corynebacteriaceae
-## OTU_619        Actinomycetales    unclassified_Actinomycetales
-## OTU_83         Actinomycetales               Brevibacteriaceae
-## OTU_941      Bifidobacteriales              Bifidobacteriaceae
-## OTU_131      Bifidobacteriales              Bifidobacteriaceae
-##                                 genus
-## OTU_111                 Lactobacillus
-## OTU_303                 Lactobacillus
-## OTU_5                   Lactobacillus
-## OTU_302                 Lactobacillus
-## OTU_541         unclassified_Bacteria
-## OTU_91   unclassified_Lactobacillales
-## OTU_1175                Lactobacillus
-## OTU_48                  Lactobacillus
-## OTU_468                    Finegoldia
-## OTU_104                   Gardnerella
-## OTU_38    unclassified_Micrococcaceae
-## OTU_45   unclassified_Actinomycetales
-## OTU_313               Corynebacterium
-## OTU_338               Corynebacterium
-## OTU_190               Corynebacterium
-## OTU_58                Corynebacterium
-## OTU_619  unclassified_Actinomycetales
-## OTU_83                 Brevibacterium
-## OTU_941                   Gardnerella
-## OTU_131                   Gardnerella</code></pre>
-<p>Popular biomarker discovery tools, utilizing multivariate analysis:<br />
+head(sigtab)</code></pre>
+<pre><code>##            baseMean log2FoldChange     lfcSE       stat       pvalue
+## OTU_111   1767.5124     -11.982176 1.5800953  -7.583198 3.371385e-14
+## OTU_303   1178.4559     -10.742514 1.5008538  -7.157602 8.210050e-13
+## OTU_5   258736.2200      -4.154370 0.9431855  -4.404616 1.059716e-05
+## OTU_302    138.3865      -6.686948 1.2958589  -5.160244 2.466285e-07
+## OTU_541    196.9992     -15.118544 1.2568358 -12.029053 2.500124e-33
+## OTU_91    1354.4135     -14.692651 1.3425713 -10.943665 7.125963e-28
+##                 padj   domain                phylum                 class
+## OTU_111 4.015014e-13 Bacteria            Firmicutes               Bacilli
+## OTU_303 8.273204e-12 Bacteria            Firmicutes               Bacilli
+## OTU_5   5.845259e-05 Bacteria            Firmicutes               Bacilli
+## OTU_302 1.615417e-06 Bacteria            Firmicutes               Bacilli
+## OTU_541 1.091721e-31 Bacteria unclassified_Bacteria unclassified_Bacteria
+## OTU_91  2.333753e-26 Bacteria            Firmicutes               Bacilli
+##                         order                       family
+## OTU_111       Lactobacillales             Lactobacillaceae
+## OTU_303       Lactobacillales             Lactobacillaceae
+## OTU_5         Lactobacillales             Lactobacillaceae
+## OTU_302       Lactobacillales             Lactobacillaceae
+## OTU_541 unclassified_Bacteria        unclassified_Bacteria
+## OTU_91        Lactobacillales unclassified_Lactobacillales
+##                                genus
+## OTU_111                Lactobacillus
+## OTU_303                Lactobacillus
+## OTU_5                  Lactobacillus
+## OTU_302                Lactobacillus
+## OTU_541        unclassified_Bacteria
+## OTU_91  unclassified_Lactobacillales</code></pre>
+<p>Other popular biomarker discovery tools, utilizing multivariate analysis:<br />
 - <a href="https://bitbucket.org/biobakery/biobakery/wiki/lefse">LEfSe</a><br />
 - <a href="https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf">Indicator Analysis</a></p>
 </div>

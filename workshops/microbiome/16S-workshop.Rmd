@@ -11,21 +11,6 @@ output:
       smooth_scroll: false
       number_sections: true
 ---
-```{r setup, include=FALSE}
-#### Setup environment
-
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(reshape2)
-library(phyloseq)
-library(vegan)
-library(ape)
-library(ggpubr)
-library(RColorBrewer)
-theme_set(theme_bw())
-set.seed(12345)
-```
-
 
 This markdown outlines instructions for visualization and analysis of OTU-clustered amplicon sequencing data, primarily using the _phyloseq_ package.  
 
@@ -62,11 +47,33 @@ We will use the output files generated during the sequence processing steps.
 - Sample metadata : `relman2017_samples.sample_data.txt`
 - OTU phylogenetic tree : `relman2017_samples.rep_set.tre`
 
+#### Load packages
+
+```{r setup}
+#### Setup environment
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(tibble)
+library(ggplot2)
+library(magrittr)
+library(reshape2)
+library(phyloseq)
+library(vegan)
+library(ape)
+library(ggpubr)
+library(RColorBrewer)
+theme_set(theme_bw())
+set.seed(12345)
+```
 
 ### Load data
 Let's read in the data files using `read_tsv()` function of **readr** package 
 ```{r}
+# create a dataDir variable
 dataDir = "~/Documents/16S-workshop/output/"
+# change this to the directory on your laptop where the files are located
+
 # import OTU table
 otu <- read_tsv(paste(dataDir, "relman2017_samples.otu_table.txt", sep="/"))
 otu
@@ -108,6 +115,7 @@ SDATA <- sample_data(metadata)
 
 # create the phyloseq object
 physeq <- phyloseq(OTU, TAX, SDATA, phytree)
+physeq
 ```
 
 
@@ -115,12 +123,13 @@ physeq <- phyloseq(OTU, TAX, SDATA, phytree)
 Read More: [(Pre)Processing Data](https://joey711.github.io/phyloseq/preprocess.html)  
 _Phyloseq_ package provides a plethora of functions for filtering, subsetting and merging abundance data. It is beyond the scope of this workshop to discuss their usage in detail and downstream implications of chosen threshold. I strongly recommend referring the _phyloseq_ vignette for answers!  
 For this tutorial, we will remove taxa that have read count less than 100 in at least 10% of samples. This protects againsts OTUs with small mean and trivially large C.V.  
-*Do not use these measures to filter your dataset!*
+*Do not use these measures for your own project data!*
 ```{r}
 # For this tutorial, we will only look into high-abundance/high-prevelance OTUs
 physeq.f <- filter_taxa(physeq, 
                         function(x) sum(x >= 100) > (0.01*length(x)), 
                         prune = TRUE)
+physeq.f
 ```
 
 
@@ -154,7 +163,7 @@ propData <- as.data.frame(t(otu_table(physeq.f.ra.genus)))
 plotDF <- propData %>%
   rownames_to_column(var="sample") %>%
   melt() %>%
-  magrittr::set_names(c("sample", "taxa", "relab"))
+  set_names(c("sample", "taxa", "relab"))
   
 # add taxonomy to plotting DF
 taxonomy.2 <- taxonomy %>%
@@ -228,13 +237,13 @@ propData <- as.data.frame(t(otu_table(physeq.f.ra)))
 # calculate shannon index, manipulate data frame for plotting
 adivDF.shannon <- as.data.frame(diversity(propData, index = "shannon")) %>%
   rownames_to_column(var="sample") %>%
-  magrittr::set_names(c("sample", "value")) %>%
+  set_names(c("sample", "value")) %>%
   mutate(index = "shannon")
 
 # calculate invsim index, manipulate data frame for plotting
 adivDF.invsim <- as.data.frame(diversity(propData, index = "invsim")) %>%
   rownames_to_column(var="sample") %>%
-  magrittr::set_names(c("sample", "value")) %>%
+  set_names(c("sample", "value")) %>%
   mutate(index = "invsim")
 
 # create plotting dataframe
@@ -299,10 +308,10 @@ diagdds <- DESeq(diagdds, test="Wald", fitType="parametric")
 res <- results(diagdds, cooksCutoff = FALSE)
 sigtab <- res[which(res$padj < 0.01), ]
 sigtab <- cbind(as(sigtab, "data.frame"), as(tax_table(physeq.f)[rownames(sigtab), ], "matrix"))
-head(sigtab, n = 20)
+head(sigtab)
 ```
 
-Popular biomarker discovery tools, utilizing multivariate analysis:  
+Other popular biomarker discovery tools, utilizing multivariate analysis:  
 - [LEfSe](https://bitbucket.org/biobakery/biobakery/wiki/lefse)  
 - [Indicator Analysis](https://cran.r-project.org/web/packages/indicspecies/vignettes/indicspeciesTutorial.pdf)
 
