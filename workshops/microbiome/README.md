@@ -52,7 +52,7 @@ Hop on to a compute node using `ijob` -
 
 	ijob -A somrc-hpc-workshop -c 20 --mem=20gb -p standard
 
-More on [`ijob`](https://arcs.virginia.edu/slurm)
+More on [`ijob`](https://arcs.virginia.edu/slurm)  
 *After the workshop, you will no longer have access to `somrc-hpc-workshop` allocation. Please use your group allocations.*
 
 Load required modules - 
