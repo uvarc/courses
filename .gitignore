@@ -1,0 +1,24 @@
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# OSX
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.lnk
+*~
+
+# Python
+.ipynb_checkpoints
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
