@@ -1,0 +1,110 @@
+---
+title: "Version Control with Git and GitHub"
+author: "VP Nagraj<br>School of Medicine Research Computing"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: "style.css"
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      beforeInit: "https://platform.twitter.com/widgets.js" 
+---
+class: center
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+```
+background-image: url('https://www.gotgroove.com/hs-fs/hub/188845/file-4063238065-png/blog-files/version-control-comic.png?t=1529956342424&width=692&height=696&name=version-control-comic.png')
+
+<http://geek-and-poke.com/>
+---
+class: center
+
+<https://github.com/tidyverse/dplyr/commit/b3fb3601>
+
+```{r, out.width = "100%", eval=TRUE}
+knitr::include_graphics("img/diff_small.png")
+```
+
+---
+<table class="table">
+  <tbody>
+    <tr>
+      <td><img src="img/git.svg" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>Git</h3></td>
+      <td style = "padding-left:50px;">Version control software</td>
+    </tr>
+    <tr>
+      <td><img src="img/github-desktop.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>GitHub Desktop</h3></td>
+      <td style = "padding-left:50px;">Desktop client for using syncing files from your computer to GitHub</td>
+    </tr>
+    <tr>
+      <td><img src="img/github.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>GitHub</h3></td>
+      <td style = "padding-left:50px;">Website for hosting and managing Git repositories</td>
+    </tr>
+    <tr>
+      <td><img src="img/bitbucket.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>Bitbucket</h3></td>
+      <td style = "padding-left:50px;">Website for hosting and managing either Mercurial or Git repositories</td>
+    </tr>
+    <tr>
+      <td><img src="img/gitlab.svg" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>GitLab</h3></td>
+      <td style = "padding-left:50px;">Website for hosting and managing Git repositories with additional tools to build/deploy the code/programs</td>
+    </tr>
+  </tbody>
+</table>
+---
+<table class="table">
+  <tbody>
+    <tr>
+      <td><img src="img/git.svg" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>Git</h3></td>
+      <td style = "padding-left:50px;">Version control software</td>
+    </tr>
+    <tr>
+      <td><img src="img/github-desktop.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px; text-decoration: line-through;"><h3>GitHub Desktop</h3></td>
+      <td style = "padding-left:50px; text-decoration: line-through;">Desktop client for using syncing files from your computer to GitHub</td>
+    </tr>
+    <tr>
+      <td><img src="img/github.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px;"><h3>GitHub</h3></td>
+      <td style = "padding-left:50px;">Website for hosting and managing Git repositories</td>
+    </tr>
+    <tr>
+      <td><img src="img/bitbucket.png" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px; text-decoration: line-through;"><h3>Bitbucket</h3></td>
+      <td style = "padding-left:50px; text-decoration: line-through;">Website for hosting and managing either Mercurial or Git repositories</td>
+    </tr>
+    <tr>
+      <td><img src="img/gitlab.svg" style="width:100px;height:100px;"></img></td>
+      <td style = "padding-left:50px; text-decoration: line-through;"><h3>GitLab</h3></td>
+      <td style = "padding-left:50px; text-decoration: line-through;">Website for hosting and managing Git repositories with additional tools to build/deploy the code/programs</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+<blockquote class="twitter-tweet" data-lang="en" width = "300" min-width="300" style="padding-left:240px;"> <a href="https://twitter.com/thepracticaldev/status/762709515133485056?lang=en"></a></blockquote>
+
+<https://twitter.com/thepracticaldev/status/762709515133485056>
+---
+class: center
+
+## agenda
+
+#### 8:30-9:00 = setup
+
+#### 9:00-9:15 = introduction and slides
+
+#### 9:15-10:00 = github
+
+#### 10:00-10:15 = break
+
+#### 10:15-11:00 = git
+
+#### 11:00-12:00 = exercises
