@@ -1,0 +1,22 @@
+Amino Acid	SLC	DNA codons
+Isoleucine	I	ATT,ATC,ATA
+Leucine	L	CTT,CTC,CTA,CTG,TTA,TTG
+Valine	V	GTT,GTC,GTA,GTG
+Phenylalanine	F	TTT,TTC
+Methionine	M	ATG
+Cysteine	C	TGT,TGC
+Alanine	A	GCT,GCC,GCA,GCG
+Glycine	G	GGT,GGC,GGA,GGG
+Proline	P	CCT,CCC,CCA,CCG
+Threonine	T	ACT,ACC,ACA,ACG
+Serine	S	TCT,TCC,TCA,TCG,AGT,AGC
+Tyrosine	Y	TAT,TAC
+Tryptophan	W	TGG
+Glutamine	Q	CAA,CAG
+Asparagine	N	AAT,AAC
+Histidine	H	CAT,CAC
+Glutamic acid	E	GAA,GAG
+Aspartic acid	D	GAT,GAC
+Lysine	K	AAA,AAG
+Arginine	R	CGT,CGC,CGA,CGG,AGA,AGG
+Stop codons	Stop	TAA,TAG,TGA
