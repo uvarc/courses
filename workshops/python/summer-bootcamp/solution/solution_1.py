@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 
-# import modules
-import random
-from statistics import *
+a=[1,2,3] 
+b = a[:]
+c = a
+b[0] = 5
+c[0] = 10
 
-# create a random list of 100 integers between 0 - 1000 
-myList = random.sample(range(0, 1000), 100)
-
-# calculate the mean
-m = mean(myList)
-
-# print the mean
-print("Mean of the random list: %f" % m)
+# print values of a and b
+print("List a: ", a)
+print("List b: ", b)
+print("List c: ", c)

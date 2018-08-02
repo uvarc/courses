@@ -1,9 +1,14 @@
 #!/usr/bin/env python
 
-a=[1,2,3] 
-b = a[:]
-b[0] = 5
+# import modules
+import random
+from statistics import *
 
-# print values of a and b
-print("List a: ", a)
-print("List b: ", b)
+# create a random list of 100 integers between 0 - 1000 
+myList = random.sample(range(0, 1000), 100)
+
+# calculate the mean
+m = mean(myList)
+
+# print the mean
+print("Mean of the random list: %f" % m)
