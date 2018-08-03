@@ -1,27 +1,34 @@
 # Introduction to Research Computing Resources at UVA
 
+![](img/Rivanna.jpg)
+
 ## Requirements:
 
+#### For Day 1:
 * Account on Rivanna
+
+#### For Day 2:
 * Globus Personal
 
 ## Contents:
 
-* [Logging into Rivanna](#Logging-into-Rivanna)
+* [Log into Rivanna](#Log-into-Rivanna)
 * [Change the File System](#change-the-file-system)
 
-## Logging into Rivanna
+## Log into Rivanna
 
 Ssh into the system from your terminal. Windows users use PuTTY.
 
 ```ssh -Y your_UVA_ID@rivanna.hpc.virginia.edu```
   
-Check out your acccount and allocation status
+Check out your acccount and allocation status:
 
 ```>whoami```
+
 ```>allocations```
 
 Where am I?
+
 ```>pwd```
 
 
