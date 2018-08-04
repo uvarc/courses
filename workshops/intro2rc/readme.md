@@ -2,6 +2,8 @@
 
 ![](img/Rivanna.jpg)
 
+UVA has 
+
 ## Requirements:
 
 #### For Day 1:
@@ -19,17 +21,25 @@
 
 Ssh into the system from your terminal. Windows users use PuTTY.
 
-```ssh -Y your_UVA_ID@rivanna.hpc.virginia.edu```
+```
+ssh -Y your_UVA_ID@rivanna.hpc.virginia.edu
+```
   
 Check out your acccount and allocation status:
 
-```>whoami```
+```
+>whoami
+```
 
-```>allocations```
+```
+>allocations
+```
 
 Where am I?
 
-```>pwd```
+```
+>pwd
+```
 
 
   
