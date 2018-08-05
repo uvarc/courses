@@ -4,5 +4,5 @@ This repository hosts research computing teaching materials developed by [School
 
 For a complete list of upcoming workshops visit:
 
-<https://education.cadre.virginia.edu/>s
+<https://education.cadre.virginia.edu/>
 
