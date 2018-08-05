@@ -1,6 +1,3 @@
 # Courses / Workshops
 
-## Introduction to the Cloud - 9/26/2017
-
-* [Login Credentials]()
-* [Exercises](https://github.com/uvasomrc/courses/tree/master/workshops/cloud)
+This repository hosts research computing teaching materials developed by [School of Medicine Research Computing](https://somrc.virginia.edu/) at the University of Virginia. 
