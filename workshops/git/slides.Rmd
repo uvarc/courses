@@ -28,6 +28,16 @@ knitr::include_graphics("img/diff_small.png")
 ```
 
 ---
+
+class: center
+
+<https://www.ncbi.nlm.nih.gov/pubmed/26785377>
+
+```{r, out.width = "100%", eval=TRUE}
+knitr::include_graphics("img/plospaper.png")
+```
+
+---
 <table class="table">
   <tbody>
     <tr>
@@ -101,10 +111,10 @@ class: center
 
 #### 9:00-9:15 = introduction and slides
 
-#### 9:15-10:00 = github
+#### 9:15-10:15 = github
 
-#### 10:00-10:15 = break
+#### 10:15-10:30 = break
 
-#### 10:15-11:00 = git
+#### 10:15-11:45 = git
 
-#### 11:00-12:00 = exercises
+#### 11:45-12:00 = wrap-up
