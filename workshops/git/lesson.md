@@ -1,6 +1,6 @@
 ## Introduction
 
-Version control software provides a systematic way to keep track of changes made to files. There are a number of version control software (VCS) systems ... Git is one of them. It's a powerful tool for tracking and reconciling changes to text files from individual or multiple contributors. The basic unit of Git is the repository. Unlike some other VCS, Git tracks changes by storing **snapshots** of entire repository at different points in time. This is internally different than "delta-based" system that just keeps track of changes to the files (https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). While Git can be used as a standalone piece of software, many people leverage web hosting platforms that expand the VCS functionality and have project management and collaborative features built in. Several examples of these services include [Bitbucket](https://bitbucket.org/), [GitLab](https://about.gitlab.com/) and [GitHub](https://github.com/).
+Version control software provides a systematic way to keep track of changes made to files. There are a number of version control software (VCS) systems ... Git is one of them. It's a powerful tool for tracking and reconciling changes to text files from individual or multiple contributors. The basic unit of Git is the repository. Unlike some other VCS, Git tracks changes by storing **snapshots** of entire repository at different points in time. This is internally different than "delta-based" system that just keeps track of changes to the files. While Git can be used as a standalone piece of software, many people leverage web hosting platforms that expand the VCS functionality and have project management and collaborative features built in. Several examples of these services include [Bitbucket](https://bitbucket.org/), [GitLab](https://about.gitlab.com/) and [GitHub](https://github.com/).
 
 ## GitHub
 
@@ -188,9 +188,7 @@ The `diff` command is very useful in seeing the actual changes we've made:
 
 `git diff`
 
-The output from `diff` includes line-by-line additions and subtractions. For more on interpreting the output see: 
-
-<https://stackoverflow.com/questions/2529441/how-to-read-the-output-from-git-diff?answertab=votes#tab-top>
+The output from `diff` includes line-by-line additions and subtractions. For more information, refer to the [resources](resources.md)
 
 ### 9. Stage and commit the change made to `qcheck.py`
 
@@ -212,7 +210,7 @@ Every commit requires a message specifying what and *why* a change was made. You
 
 `git commit -m "increased number of reads to be plotted and changed plot file name"`
 
-It is worth noting here that Git users have varied philosophies and practices regarding writing commit messages. For more information, refer to the *Further Resources* links.
+It is worth noting here that Git users have varied philosophies and practices regarding writing commit messages. For more information, refer to the [resources](resources.md).
 
 The **commit** we just made is associated with a unique **hash**, which is an alphanumeric reference for the code at the exact point time when we committed the change(s). You can refer to this hash (or an abbreviation)  of it with other Git commands, and you'll see it in the log:
 

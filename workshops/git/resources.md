@@ -1,5 +1,14 @@
 ## Further Resources
 
+### Books
+
+- <https://git-scm.com/book/en/v2>
+
+### Interactive Tutorials
+
+- <http://onlywei.github.io/explain-git-with-d3/>
+- <https://learngitbranching.js.org/>
+
 ### Pull Requests
 
 - <https://help.github.com/articles/creating-a-pull-request/>
