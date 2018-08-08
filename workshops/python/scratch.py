@@ -142,6 +142,16 @@ print(dna_basepairs["C"])
 print(dna_basepairs["G"])
 print(dna_basepairs["T"])
 
+
+# %%
+
+for pair in dna_basepairs:
+    print(dna_basepairs[pair])
+    
+my_nums = []
+print(my_nums)
+
+
 # %%
 
 dna_basepairs = {"A": "T", "C": "G", "G": "C", "T": "A"}
