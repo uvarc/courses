@@ -202,55 +202,6 @@ print(comp_seq)
     
 # %%
 
-def my_func(DNA_seq):
-    
-    dna_basepairs = {"A": "T", "C": "G", "G": "C", "T": "A"}
-    comp_seq = ""
-    
-    for base in myDNA:
-        if base == "A":
-            comp_seq = comp_seq + "U"
-        else:
-            comp_seq = comp_seq + dna_basepairs[base]
-        
-    return comp_seq
-
-print(my_func(myDNA))
-
-# %%
-
-import numpy
-print(numpy.sqrt(4))
-
-import numpy as np
-print(numpy.sqrt(9))
-
-from numpy import sqrt
-print(sqrt(16))
-
-# %%
-
-f1 = open("my_sequences.txt","r")   # opening the file for reading ("r")
-for row in f1:
-    print(row)
-f1.close()                     # closing the file, necessary if you open using the equal sign
-
-# Method 2
-with open("my_sequences.txt","r") as f2:  # using "with", the close function is not necessary
-    for row in f2:
-        print(row)
-        
-# %%
-        
-with open("my_sequences.txt","r") as fi:    # my_sequences.txt is opened for reading
-    with open("my_complements.txt", "a") as fo:  # a new file my_complements.txt is opened for writing with appending
-        for row in fi:                      # for each row in my_sequences.txt...:
-            my_seq = row.upper().rstrip()   # upper capitalizes the dna sequence, rstrip removes the line ending code
-            comp_seq = my_func(my_seq)      # runs our RNA transcription function
-            fo.write(comp_seq+"\n")         # writes comp_seq and newline code to my_complements.txt
-            
-# %%
-
 help(print)
 
 print?
