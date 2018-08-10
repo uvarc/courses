@@ -139,7 +139,7 @@ There are some false positives from the merging step, some reads after merging a
 In this step, we shall remove low quality amplicons. We will filter reads based on expected error rates, filter longer than expected amplicons, and convert the reads to fasta format.   
 
 	cd ${WORKDIR}/qc/
-	vsearch --fastq_filter ${WORKDIR}/mergepairs/SRR5972053_merged.fastq --fastq_maxee 1 --fastq_maxlen 250 --fastaout SRR5972053_merged_qc.fasta
+	vsearch --fastq_filter ${WORKDIR}/mergepairs/SRR5972053_merged.fastq --fastq_maxee 1 --fastq_maxlen 270 --fastaout SRR5972053_merged_qc.fasta
 
 
 **_Relabel_**\
